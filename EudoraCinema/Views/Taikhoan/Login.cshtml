@@ -1,0 +1,42 @@
+﻿@model EudoraCinema.Models.TaikhoanEntity
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="wrapper">
+        <div class="container">
+            <div class="row justify-content-around">
+                <form action="" class="col-md-6 bg-light p-3">
+                    <h1 class="text-center text-uppercase h3">Đăng nhập</h1>
+                    <div class="form-group">
+                        <label for="" class="form-label">Email</label>
+                        @*<input type="text" class="form-control">*@
+                        @Html.EditorFor(model => model.sEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.sEmail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group ">
+                        <label for="" class="form-label">Mật khẩu</label>
+                        @Html.EditorFor(model => model.sMatkhau, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.sMatkhau, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group py-3">
+                        <a href="">Quên mật khẩu?</a>
+                    </div>
+                    <div class="form-group ">
+                        <button class="btn btn-primary form-control">Đăng nhập</button>
+                    </div>
+                    <div class="form-group py-3 ">
+                        <button class="btn btn-style form-control">Đăng ký</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
