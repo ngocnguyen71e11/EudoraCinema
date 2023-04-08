@@ -5,7 +5,7 @@ using System.Web;
 
 namespace EudoraCinema.Models
 {
-    public class PhimEnity
+    public class PhimEntity
     {
 
         private int m_PK_iPhimID;

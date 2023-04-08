@@ -19,7 +19,7 @@ namespace EudoraCinema.Controllers
                 string Email = collection["sEmail"];
                 string Pass = collection["sMatkhau"];
                 //httpClient.BaseAddress = new Uri(UriString);
-                using (HttpResponseMessage response = httpClient.GetAsync("http://192.168.1.26:8043/api/TaikhoanAPI/"+Email+"/"+Pass).Result)
+                using (HttpResponseMessage response = httpClient.GetAsync("https://localhost:44313/api/TaikhoanAPI/" + Email+"/"+Pass).Result)
                 {
                     if (response.IsSuccessStatusCode)
                     {
@@ -32,8 +32,6 @@ namespace EudoraCinema.Controllers
                     }
                 }
             }
-
-            return View();
         }
     }
 }
