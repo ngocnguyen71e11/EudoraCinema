@@ -12,10 +12,11 @@ namespace EudoraCinema.Controllers
 {
     public class AdminController : Controller
     {
+
         private const string url_base = "http://localhost:8043/";
         private const string direct_insertFilm = "api/PhimAPI";
         // GET: Admin
-        public ActionResult FilmInsert(IFormCollection collection)
+        public ActionResult FilmInsert(FormCollection collection)
         {
             PhimEntity phimEntity = new PhimEntity();
             using (HttpClient httpClient = new HttpClient())
