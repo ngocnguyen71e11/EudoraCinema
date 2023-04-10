@@ -1,40 +1,59 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<!DOCTYPE html>
 
-<div class="row justify-content-around">
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://files.betacorp.vn/files/ecm/2023/02/01/untitled-4-113959-010223-98.jpg" class="d-block w-100" alt="...">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/IndexStyle.css" rel="stylesheet" />
+    <title>FilmInsertPage</title>
+</head>
+<body>
+    <div class="row justify-content-around" style="min-height:100vh; height:auto;">
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://files.betacorp.vn/files/ecm/2023/02/01/untitled-4-113959-010223-98.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://files.betacorp.vn/files/ecm/2023/02/03/beta-1702x621-ctkc-100442-030223-59.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://files.betacorp.vn/files/ecm/2023/01/03/1702x621-171108-030123-22.jpg" class="d-block w-100" alt="...">
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="https://files.betacorp.vn/files/ecm/2023/02/03/beta-1702x621-ctkc-100442-030223-59.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://files.betacorp.vn/files/ecm/2023/01/03/1702x621-171108-030123-22.jpg" class="d-block w-100" alt="...">
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="col-md-5 ">
+            <button class=" btn " style="font-weight: 500">PHIM SẮP CHIẾU</button>
+            <button class=" btn " style="font-weight: 500">PHIM ĐANG CHIẾU</button>
+            <button class=" btn " style="font-weight: 500">SUẤT CHIẾU ĐẶC BIỆT</button>
+        </div>
+        <div class="list-phim_around">
+            @foreach (EudoraCinema.Models.PhimEntity item in Model)
+            {
+                <div class="list-phim">
+                    <div>
+                        <img src="~/Image/media_images_2023_02_17_400x633-1-141958-170223-98.jpg" style="width: 100%; border-radius: 8px;" />
+                        @*@item.sAnh*@
+                    </div>
+                    <div class="list-phim_tenphim"><a href="#">@item.sTenphim</a></div>
+                    <div>@item.sThoiluong</div>
+                    <div>@item.sDaodien</div>
+                    <button class="btn btn-muave">MUA VÉ</button>
+                </div>
+
+            }
+        </div>
+
     </div>
-    <div class="col-md-5 ">
-        <button class=" btn "style="font-weight: 500">PHIM SẮP CHIẾU</button>
-        <button class=" btn "style="font-weight: 500">PHIM ĐANG CHIẾU</button>
-        <button class=" btn "style="font-weight: 500">SUẤT CHIẾU ĐẶC BIỆT</button>
-    </div>
-    <table class="table">
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </table>
-</div>
+</body>
+</html>

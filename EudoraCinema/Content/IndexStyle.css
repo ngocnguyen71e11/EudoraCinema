@@ -1,0 +1,32 @@
+﻿body {
+}
+.list-phim {
+    float: left;
+    text-align: center;
+    width: 22%;
+    height: 630px;
+    padding: 1%;
+    position: relative;
+}
+.list-phim_tenphim a {
+    line-height: 1.5em;
+    font-weight: 700;
+}
+.list-phim_around{
+    width:100%;
+    margin-left:10%;
+}
+.btn-muave {
+    width: 90%;
+    height: 40px;
+    background-color: orangered;
+    color: #ffffff;
+    position: absolute;
+    font-weight: 700;
+    
+}
+.list-phim .btn-muave {
+    position: absolute;
+    bottom: 0;
+    left: 4%;
+}

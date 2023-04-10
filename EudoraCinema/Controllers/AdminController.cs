@@ -18,7 +18,9 @@ namespace EudoraCinema.Controllers
         // GET: Admin
         public ActionResult FilmInsert(FormCollection collection)
         {
-            PhimEntity phimEntity = new PhimEntity();
+            try
+            {
+                PhimEntity phimEntity = new PhimEntity();
             using (HttpClient httpClient = new HttpClient())
             {
                 phimEntity.sTenphim = collection["sTenphim"];
@@ -29,13 +31,13 @@ namespace EudoraCinema.Controllers
                 phimEntity.sNgonngu = collection["sNgonngu"];
                 phimEntity.sMota = collection["sMota"];
                 phimEntity.sAnh = collection["sAnh"];
-                try
-                {
+                
                     using (HttpResponseMessage response = httpClient.PostAsJsonAsync(url_base + direct_insertFilm, phimEntity).Result)
                     {
                         if (response.IsSuccessStatusCode)
                         {
-                            return View("Index");
+                            return RedirectToAction("Index", "Taikhoan");
+                            
                         }
                         else
                         {
@@ -43,10 +45,11 @@ namespace EudoraCinema.Controllers
                             return View();
                         }
                     }
-                }
-                catch(Exception ex) { return View(); }
+               
 
             }
+            }
+            catch (Exception ex) { return View(); }
         }
             // GET: Admin/Details/5
             public ActionResult Details(int id)
