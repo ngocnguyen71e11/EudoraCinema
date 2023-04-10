@@ -11,6 +11,11 @@ namespace EudoraCinema.Controllers
 {
     public class TaikhoanController : Controller
     {
+        private const string http_base = "https://localhost:44313/";
+        private const string direct_Film = "api/PhimAPI/";
+        private const string method_GetAllFilm = "GetAll";
+        private const string direct_Taikhoan = "api/TaikhoanAPI/";
+
         // GET: Taikhoan
         public ActionResult Init()
         {
@@ -24,7 +29,7 @@ namespace EudoraCinema.Controllers
                 string Pass = collection["sMatkhau"];
                 try
                 {
-                    using (HttpResponseMessage response = httpClient.GetAsync("https://localhost:44313/api/TaikhoanAPI/" + Email + "/" + Pass).Result)
+                    using (HttpResponseMessage response = httpClient.GetAsync(http_base+direct_Taikhoan + Email + "/" + Pass).Result)
                     {
                         if (response.IsSuccessStatusCode)
                         {
@@ -52,7 +57,7 @@ namespace EudoraCinema.Controllers
             using (HttpClient httpClient = new HttpClient())
             {
                 //httpClient.BaseAddress = new Uri(UriString);
-                using (HttpResponseMessage response = httpClient.GetAsync("https://localhost:44313/api/PhimAPI/" + "GetAll").Result)
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Film + method_GetAllFilm).Result)
                 {
                     if (response.IsSuccessStatusCode)
                     {

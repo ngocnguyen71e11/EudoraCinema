@@ -16,7 +16,7 @@ namespace EudoraCinema
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Admin", action = "FilmInsert", id = UrlParameter.Optional }
+                defaults: new { controller = "Admin", action = "FilmInsertPage", id = UrlParameter.Optional }
             );
         }
     }

@@ -210,6 +210,7 @@
     <Content Include="Views\Taikhoan\Index.cshtml" />
     <Content Include="Views\Taikhoan\Register.cshtml" />
     <Content Include="Views\Admin\FilmInsert.cshtml" />
+    <Content Include="Views\Admin\FilmInsertPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

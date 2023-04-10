@@ -1,4 +1,4 @@
-﻿@Model EudoraCinema.Models.PhimEntity;
+﻿
 @{
     ViewBag.Title = "Home Page";
 }
@@ -30,15 +30,17 @@
         <button class=" btn " style="font-weight: 500">PHIM ĐANG CHIẾU</button>
         <button class=" btn " style="font-weight: 500">SUẤT CHIẾU ĐẶC BIỆT</button>
     </div>
-    <table class="table">
+    <div>
         @foreach (EudoraCinema.Models.PhimEntity item in Model)
         {
-        <tr>
-            <th>@item.sDaodien</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
+            <div style="float:left;">
+                   <div>@item.sAnh</div>
+                   <div><a href="#">@item.sTenphim</a></div>
+                   <div>@item.sThoiluong</div>
+                   <div>@item.sDaodien</div>
+            </div>
+            
         }
-    </table>
-</div>
+    </div>
+        
+        </div>
