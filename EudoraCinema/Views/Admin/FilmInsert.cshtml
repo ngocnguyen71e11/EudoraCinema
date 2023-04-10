@@ -36,7 +36,6 @@
     </div>
     <div class="text-phim_describe">PHIM > CREATE</div>
 
-
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -47,63 +46,59 @@
                 <h3>Thêm thông tin phim</h3>
                 <label for="">Tên phim: </label>
                 @Html.EditorFor(model => model.sTenphim, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.sTenphim, "", new
-           {@*@class = "text-danger"*@})
+                @Html.ValidationMessageFor(model => model.sTenphim)
                 <br />
                 <label>Thời lượng:</label>
                 @Html.EditorFor(model => model.sThoiluong, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.sThoiluong, "", new
-           {@*@class = "text-danger"*@})
+                @Html.ValidationMessageFor(model => model.sThoiluong)
                 <br />
                 <label>Ngày khởi chiếu:</label>
                 @Html.EditorFor(model => model.dNgaykhoichieu, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                @Html.ValidationMessageFor(model => model.dNgaykhoichieu, "", new
-           {@*@class = "text-danger"*@})
+                @Html.ValidationMessageFor(model => model.dNgaykhoichieu)
                 <br />
                 <label>Đạo diễn:</label>
                 @Html.EditorFor(model => model.sDaodien, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.sDaodien, "", new
-           {@*@class = "text-danger"*@})
+                @Html.ValidationMessageFor(model => model.sDaodien)
                 <br>
                 <label for="">Diễn viên: </label>
                 @Html.EditorFor(model => model.sDienvien, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.sDienvien, "", new
-           {@*@class = "text-danger"*@})
+                @Html.ValidationMessageFor(model => model.sDienvien)
 
             </div>
             <div class="arr-ava">
                 <label for="">Ngôn ngữ: </label>
                 @Html.EditorFor(model => model.sNgonngu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.sNgonngu, "", new
-           {@*@class = "text-danger"*@})
+                @Html.ValidationMessageFor(model => model.sNgonngu)
                 <label for="">Mô tả: </label><br />
 
                 @Html.EditorFor(model => model.sMota, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.sMota, "", new
-           {@*@class = "text-danger"*@})
+                @Html.ValidationMessageFor(model => model.sMota)
 
                 <div class="form-ava">
-                    <input id="img_film" type="file" accept=".jpg, .png" class="btn-Phim_anh inp-file_img" placeholder="Chọn ảnh">
-                    <div id="base64">
-                        @Html.EditorFor(model => model.sAnh, new { htmlAttributes = new { @class = "form-control" , id="ImgBase64"} })
-                        @Html.ValidationMessageFor(model => model.sMota, "", new{@*@class = "text-danger"*@})
-                    </div>
+                    <input id="img_film" type="file" accept=".jpg,.png" class="btn-Phim_anh inp-file_img" placeholder="Chọn ảnh">
+                    @* <div id="base64">*@
+                    @Html.EditorFor(model => model.sAnh, new { htmlAttributes = new { @class = "Imgbase64",type ="text" } })
+                    @*     @Html.ValidationMessageFor(model => model.sAnh)*@
+                    @*  *@
                 </div>
             </div>
         </div>
-
         <div class="btn-phim_btn">
             <button type="submit" class="btn-Phim">Thêm</button>
             <button class="btn-Phim">Hủy</button>
         </div>
     </form>
+        </div>
+    }
+
+
 
     <script>
         const fileUpload = document.getElementById('img_film');
-        const base64 = document.getElementById('base64');
-        const sAnh = document.getElementById('ImgBase64');
-        const canvas = document.getElementById('view_img');
-        document.getElementById('base64').style.display = 'none';
+        // const base64 = document.getElementById('base64');
+        const sAnh = document.querySelector(".Imgbase64")
+       // const canvas = document.getElementById('view_img');
+      //  document.getElementById('base64').style.display = 'none';
         //Taske a snapshort
         // Khởi tạo đối tượng FileReader
         const reader = new FileReader();
@@ -119,17 +114,15 @@
             // Lắng nghe quá trình đọc tập tin hoàn thành
             reader.addEventListener("load", (event) => {
                 // Lấy chuỗi Binary thông tin hình ảnh
-                const img = event.target.result;
-                sAnh.innerHTML = img;
-                console.log(sAnh.html);
-             
-
+                const img = event.target.result.toString();
+                //base64.innerHTML = img;
+                sAnh.value = img;
+                //sAnh.innerHTML = img;
             })
         })
 
     </script>
-</div>
- }
-    </body>
+
+</body>
 </html>
 
