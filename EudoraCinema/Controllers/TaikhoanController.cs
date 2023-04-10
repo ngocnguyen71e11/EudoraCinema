@@ -73,5 +73,17 @@ namespace EudoraCinema.Controllers
                 }
             }
         }
+        public ActionResult MovieshowtimeList(FormCollection collection)
+        {
+            return View();
+        }
+        public ActionResult BookTicket(FormCollection collection)
+        {
+            return View();
+        }
+        public ActionResult ListSeats(FormCollection collection)
+        {
+            return View();
+        }
     }
 }

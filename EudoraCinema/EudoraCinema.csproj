@@ -216,6 +216,9 @@
     <Content Include="Views\Admin\MovieshowtimeList.cshtml" />
     <Content Include="Views\Admin\BookTicket.cshtml" />
     <Content Include="Views\Admin\ListSeats.cshtml" />
+    <Content Include="Views\Taikhoan\MovieshowtimeList.cshtml" />
+    <Content Include="Views\Taikhoan\BookTicket.cshtml" />
+    <Content Include="Views\Taikhoan\ListSeats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
