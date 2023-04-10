@@ -44,3 +44,7 @@ a {
     color: #272626;
 }
 
+.list-phim {
+    float:left;
+    margin: 5px;
+}
