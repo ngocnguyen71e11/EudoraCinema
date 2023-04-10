@@ -213,6 +213,9 @@
     <Content Include="Views\Taikhoan\Register.cshtml" />
     <Content Include="Views\Admin\FilmInsert.cshtml" />
     <Content Include="Views\Admin\FilmInsertPage.cshtml" />
+    <Content Include="Views\Admin\MovieshowtimeList.cshtml" />
+    <Content Include="Views\Admin\BookTicket.cshtml" />
+    <Content Include="Views\Admin\ListSeats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
