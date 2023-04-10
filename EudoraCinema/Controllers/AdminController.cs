@@ -13,7 +13,7 @@ namespace EudoraCinema.Controllers
     public class AdminController : Controller
     {
 
-        private const string url_base = "http://localhost:8043/";
+        private const string url_base = "http://localhost:44313/";
         private const string direct_insertFilm = "api/PhimAPI";
         // GET: Admin
         public ActionResult FilmInsert(FormCollection collection)
@@ -29,18 +29,23 @@ namespace EudoraCinema.Controllers
                 phimEntity.sNgonngu = collection["sNgonngu"];
                 phimEntity.sMota = collection["sMota"];
                 phimEntity.sAnh = collection["sAnh"];
-                using (HttpResponseMessage response = httpClient.PostAsJsonAsync(url_base + direct_insertFilm, phimEntity).Result)
+                try
                 {
-                    if (response.IsSuccessStatusCode)
+                    using (HttpResponseMessage response = httpClient.PostAsJsonAsync(url_base + direct_insertFilm, phimEntity).Result)
                     {
-                        return View();
-                    }
-                    else
-                    {
-                        // Handle error response
-                        return View();
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return View("Index");
+                        }
+                        else
+                        {
+                            // Handle error response
+                            return View();
+                        }
                     }
                 }
+                catch(Exception ex) { return View(); }
+
             }
         }
             // GET: Admin/Details/5
