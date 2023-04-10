@@ -47,6 +47,7 @@ namespace EudoraCinema.Controllers
                 }
                 catch (Exception ex) { return View(); }
 
+
             }
         }
         public ActionResult FilmInsertPage(FormCollection collection)
