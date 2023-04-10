@@ -52,7 +52,7 @@ namespace EudoraCinema.Controllers
             using (HttpClient httpClient = new HttpClient())
             {
                 //httpClient.BaseAddress = new Uri(UriString);
-                using (HttpResponseMessage response = httpClient.GetAsync("https://localhost:44313/api/TaikhoanAPI/" + "GetAll").Result)
+                using (HttpResponseMessage response = httpClient.GetAsync("https://localhost:44313/api/PhimAPI/" + "GetAll").Result)
                 {
                     if (response.IsSuccessStatusCode)
                     {
