@@ -5,7 +5,7 @@
 }
 
 <div>
-    <h1>Trang chủ > @Html.DisplayFor(model => model.sTenphim) </h1>
+    <h2>Trang chủ > @Html.DisplayFor(model => model.sTenphim) </h2>
     <hr />
     <div style="display:flex;">
         <div>
@@ -15,11 +15,12 @@
         </div>
         <div style="padding-left:10px;">
             <div><h1>@Html.DisplayFor(model => model.sTenphim)</h1></div>
-            <div>@Html.DisplayFor(model => model.sThoiluong)</div>
+            <div>@Html.DisplayFor(model => model.sMota)</div>
+            <div><label>THỜI LƯỢNG </label> @Html.DisplayFor(model => model.sThoiluong)</div>
             <div>@Html.DisplayFor(model => model.dNgaykhoichieu)</div>
             <div>@Html.DisplayFor(model => model.sDaodien)</div>
             <div>@Html.DisplayFor(model => model.sDienvien)</div>
-            <div>@Html.DisplayFor(model => model.sMota)</div>
+
             <div>@Html.DisplayFor(model => model.sNgonngu)</div>
             <div></div>
         </div>
