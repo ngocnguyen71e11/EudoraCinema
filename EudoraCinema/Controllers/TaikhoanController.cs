@@ -15,6 +15,7 @@ namespace EudoraCinema.Controllers
         private const string http_base = "https://localhost:44313/";
         private const string direct_Film = "api/PhimAPI/";
         private const string method_GetAllFilm = "GetAll";
+        private const string method_GetFilmCommingSoon = "GetPhimcommingsoon";
         private const string method_GetFilmbyID = "GetPhimbyID/";
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
 
@@ -106,6 +107,30 @@ namespace EudoraCinema.Controllers
                 return HttpNotFound();
             }
                    
+        }
+        public ActionResult FilmCommingSoon(FormCollection collection)
+        {
+            // Gọi API để lấy thông tin chi tiết phim
+            List<PhimEntity> lstUser;
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //httpClient.BaseAddress = new Uri(UriString);
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Film + method_GetFilmCommingSoon).Result)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonData = response.Content.ReadAsStringAsync().Result;
+                        lstUser = JsonConvert.DeserializeObject<List<PhimEntity>>(jsonData);
+                        return View(lstUser);
+                    }
+                    else
+                    {
+                        // Handle error response
+                        return View();
+                    }
+                }
+            }
+
         }
     }
 }

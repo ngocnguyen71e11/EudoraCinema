@@ -1,0 +1,22 @@
+﻿
+body {
+}
+
+.Detail-un {
+    padding-left: 50px;
+    font-size: 18px;
+}
+
+.Detail-ds {
+    padding-top: 5px;
+}
+
+.Detail-ds_lb {
+    font-weight: 600;
+    padding-right: 20px;
+}
+
+.Detail-des {
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
