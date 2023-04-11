@@ -1,0 +1,58 @@
+﻿@model EudoraCinema.Models.PhimEntity
+
+@{
+    ViewBag.Title = "FilmDetail";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/FilmDetailStyle.css" rel="stylesheet" />
+    <title>FilmInsertPage</title>
+</head>
+<body>
+    <h2 style="color: orange; text-decoration:underline">Trang chủ > @Html.DisplayFor(model => model.sTenphim) </h2>
+    <div style="display:flex;">
+        <div>
+            <textarea class="list-phim_base64" style="display: none;">
+                @Html.DisplayFor(model => model.sAnh)
+            </textarea>
+        </div>
+        <div class="Detail-un" >
+            <div><h1>@Html.DisplayFor(model => model.sTenphim)</h1></div>
+            <div class="Detail-des"> @Html.DisplayFor(model => model.sMota)</div>
+            <div class="Detail-ds"><label class="Detail-ds_lb">ĐẠO DIỄN:</label> @Html.DisplayFor(model => model.sDaodien)</div>
+            <div class="Detail-ds"><label class="Detail-ds_lb">DIỄN VIÊN: </label> @Html.DisplayFor(model => model.sDienvien)</div>
+            <div class="Detail-ds"><label class="Detail-ds_lb">THỜI LƯỢNG: </label> @Html.DisplayFor(model => model.sThoiluong)</div>
+            <div class="Detail-ds">
+                <div class="Detail-ds"><label class="Detail-ds_lb">NGÀY KHỞI CHIẾU: </label> @Html.DisplayFor(model => model.dNgaykhoichieu)</div>
+                <div class="Detail-ds"><label class="Detail-ds_lb">NGÔN NGỮ: </label> @Html.DisplayFor(model => model.sNgonngu)</div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var elements = document.querySelectorAll(".list-phim_base64");
+        for (var i = 0; i < elements.length; i++) {
+            var base64String = elements[i].textContent.trim();
+            var img = new Image();
+
+            img.onload = function () {
+                this.style.display = 'block';
+            };
+
+            img.src = base64String;
+            img.style.width = '400px';
+            img.style.height = '600px';
+            img.style.borderRadius = '8px';
+
+            elements[i].parentNode.insertBefore(img, elements[i].nextSibling);
+            elements[i].style.display = 'none';
+
+        }
+    </script>
+</body>
+</html>

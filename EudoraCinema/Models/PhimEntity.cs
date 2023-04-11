@@ -21,11 +21,16 @@ namespace EudoraCinema.Models
         public int PK_iPhimID { get => m_PK_iPhimID; set => m_PK_iPhimID = value; }
         public string sTenphim { get => m_sTenphim; set => m_sTenphim = value; }
         public string sThoiluong { get => m_sThoiluong; set => m_sThoiluong = value; }
-        public DateTime dNgaykhoichieu { get => m_dNgaykhoichieu; set => m_dNgaykhoichieu = value; }
+        public DateTime dNgaykhoichieu { get => m_dNgaykhoichieu; set => m_dNgaykhoichieu = value; } 
         public string sDaodien { get => m_sDaodien; set => m_sDaodien = value; }
         public string sDienvien { get => m_sDienvien; set => m_sDienvien = value; }
         public string sMota { get => m_sMota; set => m_sMota = value; }
         public string sNgonngu { get => m_sNgonngu; set => m_sNgonngu = value; }
         public string sAnh { get => m_sAnh; set => m_sAnh = value; }
+        public PhimEntity()
+        {
+            dNgaykhoichieu = DateTime.Now;
+        }
     }
+    
 }
