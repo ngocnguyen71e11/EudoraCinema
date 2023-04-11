@@ -85,6 +85,5 @@ namespace EudoraCinema.Controllers
 
             }
         }
-        
     }
 }

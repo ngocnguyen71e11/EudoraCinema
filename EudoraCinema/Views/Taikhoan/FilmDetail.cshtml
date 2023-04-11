@@ -1,0 +1,83 @@
+﻿@model EudoraCinema.Models.PhimEntity
+
+@{
+    ViewBag.Title = "FilmDetail";
+}
+
+<h2>FilmDetail</h2>
+
+<div>
+    <h4>PhimEntity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sAnh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sAnh)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.sTenphim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sTenphim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sThoiluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sThoiluong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dNgaykhoichieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dNgaykhoichieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sDaodien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sDaodien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sDienvien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sDienvien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sMota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sMota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sNgonngu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sNgonngu)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

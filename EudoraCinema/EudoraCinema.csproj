@@ -187,6 +187,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\IndexJS.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -219,6 +220,7 @@
     <Content Include="Views\Taikhoan\MovieshowtimeList.cshtml" />
     <Content Include="Views\Taikhoan\BookTicket.cshtml" />
     <Content Include="Views\Taikhoan\ListSeats.cshtml" />
+    <Content Include="Views\Taikhoan\FilmDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

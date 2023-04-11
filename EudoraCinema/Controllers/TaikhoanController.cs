@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace EudoraCinema.Controllers
         private const string http_base = "https://localhost:44313/";
         private const string direct_Film = "api/PhimAPI/";
         private const string method_GetAllFilm = "GetAll";
+        private const string method_GetFilmbyID = "GetPhimbyID/";
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
 
         // GET: Taikhoan
@@ -84,6 +86,26 @@ namespace EudoraCinema.Controllers
         public ActionResult ListSeats(FormCollection collection)
         {
             return View();
+        }
+        public ActionResult FilmDetail(int id)
+        {
+            // Gọi API để lấy thông tin chi tiết phim
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //https://localhost:44313/api/PhimAPI/1?PK_iPhimID=1
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Film +id+"?PK_iPhimID="+ id).Result)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonData = response.Content.ReadAsStringAsync().Result;
+                        PhimEntity phim = JsonConvert.DeserializeObject<PhimEntity>(jsonData);
+                        return View(phim);
+                    }
+                }
+                // Nếu không lấy được thông tin phim từ API, trả về trang 404
+                return HttpNotFound();
+            }
+                   
         }
     }
 }
