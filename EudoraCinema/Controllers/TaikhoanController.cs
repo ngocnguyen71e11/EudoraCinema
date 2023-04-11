@@ -14,6 +14,7 @@ namespace EudoraCinema.Controllers
     {
         private const string http_base = "https://localhost:44313/";
         private const string direct_Film = "api/PhimAPI/";
+        private const string direct_Timeshow = "api/LichchieuAPI/";
         private const string method_GetAllFilm = "GetAll";
         private const string method_GetFilmbyID = "GetPhimbyID/";
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
@@ -75,9 +76,24 @@ namespace EudoraCinema.Controllers
                 }
             }
         }
-        public ActionResult MovieshowtimeList(FormCollection collection)
+        public ActionResult MovieshowtimeList(int id)
         {
-            return View();
+            // Gọi API để lấy thông tin chi tiết phim
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //api/LichchieuAPI/12
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Timeshow + id ).Result)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonData = response.Content.ReadAsStringAsync().Result;
+                        List<LichchieuEntity> Lichchieu = JsonConvert.DeserializeObject<List<LichchieuEntity>>(jsonData);
+                        return View(Lichchieu);
+                    }
+                }
+                // Nếu không lấy được thông tin phim từ API, trả về trang 404
+                return HttpNotFound();
+            }
         }
         public ActionResult BookTicket(FormCollection collection)
         {
