@@ -210,7 +210,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Taikhoan\Login.cshtml" />
-    <Content Include="Views\Taikhoan\Index.cshtml" />
     <Content Include="Views\Taikhoan\Register.cshtml" />
     <Content Include="Views\Admin\FilmInsert.cshtml" />
     <Content Include="Views\Admin\FilmInsertPage.cshtml" />
@@ -221,6 +220,7 @@
     <Content Include="Views\Taikhoan\BookTicket.cshtml" />
     <Content Include="Views\Taikhoan\ListSeats.cshtml" />
     <Content Include="Views\Taikhoan\FilmDetail.cshtml" />
+    <Content Include="Views\Taikhoan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
