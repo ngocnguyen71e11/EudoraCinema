@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "HomePage";
+    ViewBag.Title = "FilmCommingSoon";
 }
 
 <!DOCTYPE html>
@@ -35,9 +35,9 @@
             </button>
         </div>
         <div style="display: flex; padding-left:25%;">
-            <div  style="font-weight: 500"><a href="@Url.Action("FilmCommingSoon", "Taikhoan")">PHIM SẮP CHIẾU</a></div>
-            <div  style="font-weight: 500"><a style="color:orange" href="@Url.Action("HomePage", "Taikhoan")">PHIM ĐANG CHIẾU</a></div>
-            <div  style="font-weight: 500"><a href="@Url.Action("HomePage", "Taikhoan")">SUẤT CHIẾU ĐẶC BIỆT</a></div>
+            <div style="font-weight: 500"><a style="color:orange" href="@Url.Action("FilmCommingSoon", "Taikhoan")">PHIM SẮP CHIẾU</a></div>
+            <div style="font-weight: 500"><a href="@Url.Action("HomePage", "Taikhoan")">PHIM ĐANG CHIẾU</a></div>
+            <div style="font-weight: 500"><a href="@Url.Action("HomePage", "Taikhoan")">SUẤT CHIẾU ĐẶC BIỆT</a></div>
         </div>
         <div class="list-phim_around">
             @foreach (EudoraCinema.Models.PhimEntity item in Model)
@@ -52,7 +52,7 @@
 
                     <div>@item.sThoiluong</div>
                     <div>@item.sDaodien</div>
-                    <button class="btn btn-muave"> <a href="@Url.Action("MovieshowtimeList", "Taikhoan", new { id = item.PK_iPhimID })">MUA VÉ</a></button>
+                    <button class="btn btn-muave">MUA VÉ</button>
                 </div>
             }
         </div>
@@ -80,4 +80,3 @@
 
 </body>
 </html>
-

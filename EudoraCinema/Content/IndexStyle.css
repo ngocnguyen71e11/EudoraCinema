@@ -30,3 +30,6 @@
     bottom: 0;
     left: 4%;
 }
+a:hover {
+    color: orange !important;
+}

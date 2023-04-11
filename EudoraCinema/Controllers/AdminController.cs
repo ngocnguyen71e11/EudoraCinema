@@ -21,8 +21,12 @@ namespace EudoraCinema.Controllers
         {
             try
             {
+                if (collection == null || collection.Count == 0)
+                {
+                    return View();
+                }
                 PhimEntity phimEntity = new PhimEntity();
-            using (HttpClient httpClient = new HttpClient())
+                using (HttpClient httpClient = new HttpClient())
             {
                 phimEntity.sTenphim = collection["sTenphim"];
                 phimEntity.sThoiluong = collection["sThoiluong"];
