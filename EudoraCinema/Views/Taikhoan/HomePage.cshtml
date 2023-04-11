@@ -44,22 +44,40 @@
             {
                 <div class="list-phim">
                     <div>
-                        <img src="~/Image/media_images_2023_02_17_400x633-1-141958-170223-98.jpg" style="width: 100%; border-radius: 8px;" />
-                        @*@item.sAnh*@
+                        <div class="list-phim_base64" style="display: none;">@item.sAnh</div>
                     </div>
-                    <div class="list-phim_tenphim"><a href="#">@item.sTenphim</a></div>
+                    <div class="list-phim_tenphim">
+                        <a href="@Url.Action("FilmDetail", "Taikhoan", new { id = item.PK_iPhimID })">@item.sTenphim</a>
+                    </div>
+
                     <div>@item.sThoiluong</div>
                     <div>@item.sDaodien</div>
                     <button class="btn btn-muave">MUA VÉ</button>
                 </div>
-
             }
         </div>
 
+
     </div>
     <script>
+        var elements = document.querySelectorAll(".list-phim_base64");
 
+        for (var i = 0; i < elements.length; i++) {
+            var base64String = elements[i].textContent.trim();
+            var img = new Image();
+
+            img.onload = function () {
+                this.style.display = 'block';
+            };
+
+            img.src = base64String;
+            img.style.width = '100%';
+            img.style.borderRadius = '8px';
+
+            elements[i].parentNode.insertBefore(img, elements[i].nextSibling);
+        }
     </script>
+
 </body>
 </html>
 

@@ -4,80 +4,44 @@
     ViewBag.Title = "FilmDetail";
 }
 
-<h2>FilmDetail</h2>
-
 <div>
-    <h4>PhimEntity</h4>
+    <h1>Trang chủ > @Html.DisplayFor(model => model.sTenphim) </h1>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.sAnh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sAnh)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.sTenphim)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sTenphim)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sThoiluong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sThoiluong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dNgaykhoichieu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dNgaykhoichieu)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sDaodien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sDaodien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sDienvien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sDienvien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sMota)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sMota)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sNgonngu)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sNgonngu)
-        </dd>
-
-
-
-    </dl>
+    <div style="display:flex;">
+        <div>
+            <textarea class="list-phim_base64" style="display: none;">
+                @Html.DisplayFor(model => model.sAnh)
+            </textarea>
+        </div>
+        <div style="padding-left:10px;">
+            <div><h1>@Html.DisplayFor(model => model.sTenphim)</h1></div>
+            <div>@Html.DisplayFor(model => model.sThoiluong)</div>
+            <div>@Html.DisplayFor(model => model.dNgaykhoichieu)</div>
+            <div>@Html.DisplayFor(model => model.sDaodien)</div>
+            <div>@Html.DisplayFor(model => model.sDienvien)</div>
+            <div>@Html.DisplayFor(model => model.sMota)</div>
+            <div>@Html.DisplayFor(model => model.sNgonngu)</div>
+            <div></div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "HomePage")
-</p>
+<script>
+    var elements = document.querySelectorAll(".list-phim_base64");
+        for (var i = 0; i < elements.length; i++) {
+            var base64String = elements[i].textContent.trim();
+            var img = new Image();
+
+            img.onload = function () {
+                this.style.display = 'block';
+            };
+
+            img.src = base64String;
+            img.style.width = '400px';
+            img.style.height = '633px';
+            img.style.borderRadius = '8px';
+
+            elements[i].parentNode.insertBefore(img, elements[i].nextSibling);
+            elements[i].style.display = 'none';
+
+        }
+</script>
