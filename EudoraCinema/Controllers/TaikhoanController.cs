@@ -16,7 +16,7 @@ namespace EudoraCinema.Controllers
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Timeshow = "api/LichchieuAPI/";
         private const string method_GetAllFilm = "GetAll";
-        private const string method_GetFilmbyID = "GetPhimbyID/";
+      //  private const string method_GetFilmbyID = "GetPhimbyID/";
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
 
         // GET: Taikhoan
