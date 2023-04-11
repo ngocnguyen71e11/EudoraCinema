@@ -36,7 +36,7 @@ namespace EudoraCinema.Controllers
                         if (response.IsSuccessStatusCode)
                         {
                                 
-                                return RedirectToAction("Index");
+                                return RedirectToAction("HomePage");
                         }
                         else
                         {
@@ -53,7 +53,7 @@ namespace EudoraCinema.Controllers
         }
 
         public ActionResult Logout() { return View(); }
-        public ActionResult Index()
+        public ActionResult HomePage()
         {
             List<PhimEntity> lstUser;
             using (HttpClient httpClient = new HttpClient())

@@ -37,7 +37,7 @@ namespace EudoraCinema.Controllers
                     {
                         if (response.IsSuccessStatusCode)
                         {
-                            return RedirectToAction("Index", "Taikhoan");
+                            return RedirectToAction("HomePage", "Taikhoan");
                             
                         }
                         else
@@ -72,7 +72,7 @@ namespace EudoraCinema.Controllers
                     {
                         if (response.IsSuccessStatusCode)
                         {
-                            return View("Index");
+                            return View("HomePage");
                         }
                         else
                         {

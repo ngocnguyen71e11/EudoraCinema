@@ -364,31 +364,31 @@ if (typeof jQuery === 'undefined') {
     return this
   }
 
-  Carousel.prototype.getItemIndex = function (item) {
+  Carousel.prototype.getItemHomePage = function (item) {
     this.$items = item.parent().children('.item')
-    return this.$items.index(item || this.$active)
+    return this.$items.HomePage(item || this.$active)
   }
 
   Carousel.prototype.getItemForDirection = function (direction, active) {
-    var activeIndex = this.getItemIndex(active)
-    var willWrap = (direction == 'prev' && activeIndex === 0)
-                || (direction == 'next' && activeIndex == (this.$items.length - 1))
+    var activeHomePage = this.getItemHomePage(active)
+    var willWrap = (direction == 'prev' && activeHomePage === 0)
+                || (direction == 'next' && activeHomePage == (this.$items.length - 1))
     if (willWrap && !this.options.wrap) return active
     var delta = direction == 'prev' ? -1 : 1
-    var itemIndex = (activeIndex + delta) % this.$items.length
-    return this.$items.eq(itemIndex)
+    var itemHomePage = (activeHomePage + delta) % this.$items.length
+    return this.$items.eq(itemHomePage)
   }
 
   Carousel.prototype.to = function (pos) {
     var that        = this
-    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))
+    var activeHomePage = this.getItemHomePage(this.$active = this.$element.find('.item.active'))
 
     if (pos > (this.$items.length - 1) || pos < 0) return
 
     if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"
-    if (activeIndex == pos) return this.pause().cycle()
+    if (activeHomePage == pos) return this.pause().cycle()
 
-    return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos))
+    return this.slide(pos > activeHomePage ? 'next' : 'prev', this.$items.eq(pos))
   }
 
   Carousel.prototype.pause = function (e) {
@@ -437,7 +437,7 @@ if (typeof jQuery === 'undefined') {
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
-      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
+      var $nextIndicator = $(this.$indicators.children()[this.getItemHomePage($next)])
       $nextIndicator && $nextIndicator.addClass('active')
     }
 
@@ -520,13 +520,13 @@ if (typeof jQuery === 'undefined') {
     if (!$target.hasClass('carousel')) return
 
     var options = $.extend({}, $target.data(), $this.data())
-    var slideIndex = $this.attr('data-slide-to')
-    if (slideIndex) options.interval = false
+    var slideHomePage = $this.attr('data-slide-to')
+    if (slideHomePage) options.interval = false
 
     Plugin.call($target, options)
 
-    if (slideIndex) {
-      $target.data('bs.carousel').to(slideIndex)
+    if (slideHomePage) {
+      $target.data('bs.carousel').to(slideHomePage)
     }
 
     e.preventDefault()
@@ -874,13 +874,13 @@ if (typeof jQuery === 'undefined') {
 
     if (!$items.length) return
 
-    var index = $items.index(e.target)
+    var HomePage = $items.HomePage(e.target)
 
-    if (e.which == 38 && index > 0)                 index--         // up
-    if (e.which == 40 && index < $items.length - 1) index++         // down
-    if (!~index)                                    index = 0
+    if (e.which == 38 && HomePage > 0)                 HomePage--         // up
+    if (e.which == 40 && HomePage < $items.length - 1) HomePage++         // down
+    if (!~HomePage)                                    HomePage = 0
 
-    $items.eq(index).trigger('focus')
+    $items.eq(HomePage).trigger('focus')
   }
 
 
@@ -1199,7 +1199,7 @@ if (typeof jQuery === 'undefined') {
     var scrollbarWidth = this.scrollbarWidth
     if (this.bodyIsOverflowing) {
       this.$body.css('padding-right', bodyPad + scrollbarWidth)
-      $(this.fixedContent).each(function (index, element) {
+      $(this.fixedContent).each(function (HomePage, element) {
         var actualPadding = element.style.paddingRight
         var calculatedPadding = $(element).css('padding-right')
         $(element)
@@ -1211,7 +1211,7 @@ if (typeof jQuery === 'undefined') {
 
   Modal.prototype.resetScrollbar = function () {
     this.$body.css('padding-right', this.originalBodyPad)
-    $(this.fixedContent).each(function (index, element) {
+    $(this.fixedContent).each(function (HomePage, element) {
       var padding = $(element).data('padding-right')
       $(element).removeData('padding-right')
       element.style.paddingRight = padding ? padding : ''
@@ -1369,7 +1369,7 @@ if (typeof jQuery === 'undefined') {
       return true
     }
 
-    var regExp = $(allowedAttributeList).filter(function (index, value) {
+    var regExp = $(allowedAttributeList).filter(function (HomePage, value) {
       return value instanceof RegExp
     })
 

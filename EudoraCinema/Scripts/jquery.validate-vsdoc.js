@@ -137,7 +137,7 @@ $.extend($.fn, {
 
 		var result = {},
 			$element = this;
-		$.each(attributes.split(/\s/), function(index, value) {
+		$.each(attributes.split(/\s/), function(HomePage, value) {
 			result[value] = $element.attr(value);
 			$element.removeAttr(value);
 		});
@@ -174,7 +174,7 @@ $.extend($.fn, {
 					return existingRules;
 				}
 				var filtered = {};
-				$.each(argument.split(/\s/), function(index, method) {
+				$.each(argument.split(/\s/), function(HomePage, method) {
 					filtered[method] = existingRules[method];
 					delete existingRules[method];
 				});
@@ -351,7 +351,7 @@ $.extend($.validator, {
 			
 			var groups = (this.groups = {});
 			$.each(this.settings.groups, function(key, value) {
-				$.each(value.split(/\s/), function(index, name) {
+				$.each(value.split(/\s/), function(HomePage, name) {
 					groups[name] = key;
 				});
 			});
@@ -769,7 +769,7 @@ $.extend($.validator, {
 		findByName: function( name ) {
 			// select by name and filter by form for performance over form.find("[name=...]")
 			var form = this.currentForm;
-			return $(document.getElementsByName(name)).map(function(index, element) {
+			return $(document.getElementsByName(name)).map(function(HomePage, element) {
 				return element.form == form && element.name == name && element  || null;
 			});
 		},

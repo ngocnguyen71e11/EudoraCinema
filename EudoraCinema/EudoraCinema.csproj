@@ -220,7 +220,7 @@
     <Content Include="Views\Taikhoan\BookTicket.cshtml" />
     <Content Include="Views\Taikhoan\ListSeats.cshtml" />
     <Content Include="Views\Taikhoan\FilmDetail.cshtml" />
-    <Content Include="Views\Taikhoan\Index.cshtml" />
+    <Content Include="Views\Taikhoan\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
