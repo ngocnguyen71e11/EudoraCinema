@@ -3606,7 +3606,7 @@ select[multiple].input-lg {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 2;
+    z-HomePage: 2;
     display: block;
     width: 34px;
     height: 34px;
@@ -4423,7 +4423,7 @@ tbody.collapse.in {
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 1000;
+    z-HomePage: 1000;
     display: none;
     float: left;
     min-width: 160px;
@@ -4527,7 +4527,7 @@ tbody.collapse.in {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 990;
+    z-HomePage: 990;
 }
 
 .pull-right > .dropdown-menu {
@@ -4583,7 +4583,7 @@ tbody.collapse.in {
         .btn-group-vertical > .btn:active,
         .btn-group > .btn.active,
         .btn-group-vertical > .btn.active {
-            z-index: 2;
+            z-HomePage: 2;
         }
 
     .btn-group .btn + .btn,
@@ -4784,14 +4784,14 @@ tbody.collapse.in {
 
     .input-group .form-control {
         position: relative;
-        z-index: 2;
+        z-HomePage: 2;
         float: left;
         width: 100%;
         margin-bottom: 0;
     }
 
         .input-group .form-control:focus {
-            z-index: 3;
+            z-HomePage: 3;
         }
 
 .input-group-lg > .form-control,
@@ -4941,7 +4941,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         .input-group-btn > .btn:hover,
         .input-group-btn > .btn:focus,
         .input-group-btn > .btn:active {
-            z-index: 2;
+            z-HomePage: 2;
         }
 
     .input-group-btn:first-child > .btn,
@@ -4951,7 +4951,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 
     .input-group-btn:last-child > .btn,
     .input-group-btn:last-child > .btn-group {
-        z-index: 2;
+        z-HomePage: 2;
         margin-left: -1px;
     }
 
@@ -5256,7 +5256,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     position: fixed;
     right: 0;
     left: 0;
-    z-index: 1030;
+    z-HomePage: 1030;
 }
 
     .navbar-fixed-top .navbar-collapse,
@@ -5308,7 +5308,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-static-top {
-    z-index: 1000;
+    z-HomePage: 1000;
     border-width: 0 0 1px;
 }
 
@@ -5876,7 +5876,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
             .pagination > li > span:hover,
             .pagination > li > a:focus,
             .pagination > li > span:focus {
-                z-index: 2;
+                z-HomePage: 2;
                 color: #23527c;
                 background-color: #eeeeee;
                 border-color: #ddd;
@@ -5901,7 +5901,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     .pagination > .active > span:hover,
     .pagination > .active > a:focus,
     .pagination > .active > span:focus {
-        z-index: 3;
+        z-HomePage: 3;
         color: #fff;
         cursor: default;
         background-color: #337ab7;
@@ -6538,7 +6538,7 @@ a.thumbnail.active {
     .list-group-item.active,
     .list-group-item.active:hover,
     .list-group-item.active:focus {
-        z-index: 2;
+        z-HomePage: 2;
         color: #fff;
         background-color: #337ab7;
         border-color: #337ab7;
@@ -7240,7 +7240,7 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1050;
+    z-HomePage: 1050;
     display: none;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
@@ -7295,7 +7295,7 @@ button.close {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1040;
+    z-HomePage: 1040;
     background-color: #000;
 }
 
@@ -7379,7 +7379,7 @@ button.close {
 
 .tooltip {
     position: absolute;
-    z-index: 1070;
+    z-HomePage: 1070;
     display: block;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-style: normal;
@@ -7511,7 +7511,7 @@ button.close {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1060;
+    z-HomePage: 1060;
     display: none;
     max-width: 276px;
     padding: 1px;
@@ -7803,7 +7803,7 @@ button.close {
     .carousel-control .glyphicon-chevron-right {
         position: absolute;
         top: 50%;
-        z-index: 5;
+        z-HomePage: 5;
         display: inline-block;
         margin-top: -10px;
     }
@@ -7840,7 +7840,7 @@ button.close {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    z-index: 15;
+    z-HomePage: 15;
     width: 60%;
     padding-left: 0;
     margin-left: -30%;
@@ -7873,7 +7873,7 @@ button.close {
     right: 15%;
     bottom: 20px;
     left: 15%;
-    z-index: 10;
+    z-HomePage: 10;
     padding-top: 20px;
     padding-bottom: 20px;
     color: #fff;

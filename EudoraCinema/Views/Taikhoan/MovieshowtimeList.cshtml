@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "MovieshowtimeList";
+}
+
+<h2>MovieshowtimeList</h2>
+
+@foreach (EudoraCinema.Models.LichchieuEntity item in Model)
+{
+    <div class="list-lichchieu">
+        <div>@item.tNgaybatdau.Date</div>
+        <div>@item.hGiochieu</div>
+    </div>
+}

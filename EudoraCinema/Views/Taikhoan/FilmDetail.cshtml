@@ -30,12 +30,12 @@
             <div class="Detail-ds">
                 <div class="Detail-ds"><label class="Detail-ds_lb">NGÀY KHỞI CHIẾU: </label> @Html.DisplayFor(model => model.dNgaykhoichieu)</div>
                 <div class="Detail-ds"><label class="Detail-ds_lb">NGÔN NGỮ: </label> @Html.DisplayFor(model => model.sNgonngu)</div>
-                <div></div>
-            </div>
+            <div></div>
         </div>
     </div>
-    <script>
-        var elements = document.querySelectorAll(".list-phim_base64");
+</div>
+<script>
+    var elements = document.querySelectorAll(".list-phim_base64");
         for (var i = 0; i < elements.length; i++) {
             var base64String = elements[i].textContent.trim();
             var img = new Image();
@@ -53,6 +53,6 @@
             elements[i].style.display = 'none';
 
         }
-    </script>
+</script>
 </body>
 </html>

@@ -308,7 +308,7 @@ window.Modernizr = (function( window, document, undefined ) {
      * contains returns a boolean for if substr is found within str.
      */
     function contains( str, substr ) {
-        return !!~('' + str).indexOf(substr);
+        return !!~('' + str).HomePageOf(substr);
     }
 
     /*>>testprop*/
@@ -489,12 +489,12 @@ window.Modernizr = (function( window, document, undefined ) {
       return !!window.openDatabase;
     };
 
-    // Vendors had inconsistent prefixing with the experimental Indexed DB:
-    // - Webkit's implementation is accessible through webkitIndexedDB
-    // - Firefox shipped moz_indexedDB before FF4b9, but since then has been mozIndexedDB
-    // For speed, we don't test the legacy (and beta-only) indexedDB
-    tests['indexedDB'] = function() {
-      return !!testPropsAll("indexedDB", window);
+    // Vendors had inconsistent prefixing with the experimental HomePageed DB:
+    // - Webkit's implementation is accessible through webkitHomePageedDB
+    // - Firefox shipped moz_HomePageedDB before FF4b9, but since then has been mozHomePageedDB
+    // For speed, we don't test the legacy (and beta-only) HomePageedDB
+    tests['HomePageedDB'] = function() {
+      return !!testPropsAll("HomePageedDB", window);
     };
 
     // documentMode logic from YUI to filter out IE8 Compat Mode
@@ -690,7 +690,7 @@ window.Modernizr = (function( window, document, undefined ) {
               sheet = style.sheet || style.styleSheet,
               cssText = sheet ? (sheet.cssRules && sheet.cssRules[0] ? sheet.cssRules[0].cssText : sheet.cssText || '') : '';
 
-          bool = /src/i.test(cssText) && cssText.indexOf(rule.split(' ')[0]) === 0;
+          bool = /src/i.test(cssText) && cssText.HomePageOf(rule.split(' ')[0]) === 0;
         });
 
         return bool;
@@ -717,7 +717,7 @@ window.Modernizr = (function( window, document, undefined ) {
     // e.g.  Modernizr.video     // true
     //       Modernizr.video.ogg // 'probably'
     //
-    // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/index.html#L845
+    // Codec values from : github.com/NielsLeenheer/html5test/blob/9106a8/HomePage.html#L845
     //                     thx to NielsLeenheer and zcorpan
 
     // Note: in some older browsers, "no" was a return value instead of empty string.
