@@ -2,6 +2,40 @@
 @{
     ViewBag.Title = "ListSeats";
 }
-
+@{
+    int seat=0;
+    string lst_bookseat;
+    string[,] lstGhe = new string[20, 20];
+    for (int i = 1; i < 20; i++)
+    {
+        for (int j = 1; j < 20; j++)
+        {
+            lstGhe[i, j] = "";
+        }
+    }
+    foreach (EudoraCinema.Models.GheEntity item in Model)
+    {
+        int cot = Convert.ToInt32(item.iCot);
+        int day = Convert.ToInt32(item.iDay);
+        lstGhe[day, cot] = Convert.ToString(item.PK_iGheID);
+    }
+}
 <h2>ListSeats</h2>
+<table>
+    @for (int i = 1; i < 20; i++)
+    {
+        <tr>
+            @for (int j = 1; j < 20; j++)
+            {
+
+                if (lstGhe.GetValue(i,j) != "")
+                {
+                    seat++;
+                    <th><a id="lst_Ghe" href="@Url.Action("BookTicket", "Taikhoan", new { iGheID = @lstGhe.GetValue(i, j) })">@seat</a></th>
+                }
+
+            }
+        </tr>
+    }
+</table>
 

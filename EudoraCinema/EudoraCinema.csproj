@@ -165,9 +165,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\GheEntity.cs" />
     <Compile Include="Models\LichchieuEntity.cs" />
     <Compile Include="Models\PhimEntity.cs" />
     <Compile Include="Models\TaikhoanEntity.cs" />
+    <Compile Include="Models\VeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

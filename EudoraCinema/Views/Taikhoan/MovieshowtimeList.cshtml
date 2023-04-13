@@ -8,7 +8,8 @@
 @foreach (EudoraCinema.Models.LichchieuEntity item in Model)
 {
     <div class="list-lichchieu">
+        @*'https://localhost:44313/api/GheAPI/23/4%2F3%2F2023/1?giochieu=23&ngaychieu=3%2F4%2F2023&FK_iPhongchieuID=1'*@ 
         <div>@item.tNgaybatdau.Date</div>
-        <div>@item.hGiochieu</div>
+        <div><a href="@Url.Action("ListSeats", "Taikhoan", new { ngaychieu = item.tNgaybatdau,giochieu=item.hGiochieu,FK_iPhongchieuID=item.FK_iPhongchieuID })">@item.hGiochieu</a></div>
     </div>
 }
