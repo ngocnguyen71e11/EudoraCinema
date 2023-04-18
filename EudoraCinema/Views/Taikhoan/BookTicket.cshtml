@@ -2,25 +2,54 @@
 @{
     ViewBag.Title = "BookTicket";
 }
-
-<h2>BookTicket</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Tên phim </th>
-        <th>Số Ghế</th>
-        <th>Phòng chiếu</th>
-    </tr>
-    @foreach (EudoraCinema.Models.VeEntity item in Model)
-    {
-
-        <tr>
-            <th>@item.PK_iVeID</th>
-            <th>@Session["PK_iPhimID"] </th>
-            <th>@item.FK_iGheID</th>
-            <th>@item.FK_iPhongchieuID</th>
-        </tr>
+<style>
+    th{
+        padding-left:20px;
     }
-</table>
-<button class="btn btn-muave">Thanh toán</button>
+    /* Make sure there's enough space below the table */
+    .table-container {
+        margin-bottom: 100px;
+    }
+
+    /* Style the button */
+    .btn-pay {
+        width:400px;
+        height:40px;
+        text-align: center;
+        font-weight: 700;
+        background-color: orange;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+</style>
+<h2 style="color:orange">Hóa đơn</h2>
+<div class="table-container">
+    <table style="margin-left:400px; padding:100px;">
+        <tr style="font-size:larger">
+            <th>STT</th>
+            <th>Tên phim </th>
+            <th>Số Ghế</th>
+            <th>Phòng chiếu</th>
+        </tr>
+        @foreach (EudoraCinema.Models.VeEntity item in Model)
+        {
+
+            <tr style="text-align:center; font-weight:100">
+                <th>@(Model.IndexOf(item) + 1)</th>
+                <th>@Session["PK_iPhimID"] </th>
+                <th>@item.FK_iGheID</th>
+                <th>@item.FK_iPhongchieuID</th>
+            </tr>
+        }
+    </table>
+</div>
+<button class="btn-pay btn btn-muave">Thanh toán</button>
 

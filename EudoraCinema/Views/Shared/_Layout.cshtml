@@ -21,18 +21,18 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item nav-link">@Html.ActionLink("LỊCH CHIẾU", "HomePage", "Home")</li>
-                            <li class="nav-item nav-link">@Html.ActionLink("PHIM", "About", "Home")</li>
+                            <li class="nav-item nav-link">@Html.ActionLink("PHIM", "HomePage", "Home")</li>
                             <li class="nav-item nav-link">@Html.ActionLink("GIÁ VÉ", "About", "Home")</li>
                             <li class="nav-item nav-link">@Html.ActionLink("TIN MỚI VÀ ƯU ĐÃI", "About", "Home")</li>
                             <li class="nav-item nav-link">@Html.ActionLink("THÀNH VIÊN", "About", "Home")</li>
                         </ul>
                     </div>
-                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03" style="padding-left: 92px;">
+                    @*<div class="collapse navbar-collapse" id="navbarTogglerDemo03" style="padding-left: 92px;">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item nav-link">@Html.ActionLink("ĐĂNG NHẬP", "Login", "Home")</li>
                             <li class="nav-item nav-link">@Html.ActionLink("ĐĂNG KÝ", "Register", "Home")</li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
             </nav>
         </div>
@@ -40,9 +40,10 @@
     <hr />
     <div class="container body-content">
         @RenderBody()
+        <br/>
     </div>
     <hr />
-    <footer>
+    <footer class="footer">
         <p>&copy; @DateTime.Now.Year - Eudora Cinema - Quà tặng từ thiên đường</p>
     </footer>
 </body>

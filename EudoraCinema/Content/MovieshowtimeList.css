@@ -1,0 +1,14 @@
+﻿body {
+}
+.list-lichchieu {
+    width: 30%;
+    text-align: center;
+    padding-left: 5%;
+    padding-top:30px;
+}
+.list-lichchieu_date{
+    font-size:30px; 
+}
+a:hover{
+    color: orange!important;
+}

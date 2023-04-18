@@ -1,41 +1,55 @@
 ﻿
-@{
-    ViewBag.Title = "ListSeats";
-}
-@{
-    int seat=0;
-    string lst_bookseat;
-    string[,] lstGhe = new string[20, 20];
-    for (int i = 1; i < 20; i++)
-    {
-        for (int j = 1; j < 20; j++)
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/ListSeatStyle.css" rel="stylesheet" />
+    <title>Đặt vé</title>
+</head>
+<body>
+    <style>
+        a:hover {
+            background-color: orange;
+        }
+    </style>
+    <h3 style="color:orange">TRANG CHỦ > ĐẶT VÉ</h3>
+
+    @{
+        int seat = 0;
+        string lst_bookseat;
+        string[,] lstGhe = new string[20, 20];
+        for (int i = 1; i < 20; i++)
         {
-            lstGhe[i, j] = "";
+            for (int j = 1; j < 20; j++)
+            {
+                lstGhe[i, j] = "";
+            }
+        }
+        foreach (EudoraCinema.Models.GheEntity item in Model)
+        {
+            int cot = Convert.ToInt32(item.iCot);
+            int day = Convert.ToInt32(item.iDay);
+            lstGhe[day, cot] = Convert.ToString(item.PK_iGheID);
         }
     }
-    foreach (EudoraCinema.Models.GheEntity item in Model)
-    {
-        int cot = Convert.ToInt32(item.iCot);
-        int day = Convert.ToInt32(item.iDay);
-        lstGhe[day, cot] = Convert.ToString(item.PK_iGheID);
-    }
-}
-<h2>ListSeats</h2>
-<table>
-    @for (int i = 1; i < 20; i++)
-    {
-        <tr>
-            @for (int j = 1; j < 20; j++)
-            {
-
-                if (lstGhe.GetValue(i,j) != "")
+    <table style="margin-left:300px; ">
+        @for (int i = 1; i < 20; i++)
+        {
+            <tr>
+                @for (int j = 1; j < 20; j++)
                 {
-                    seat++;
-                    <th><a id="lst_Ghe" href="@Url.Action("BookTicket", "Taikhoan", new { iGheID = @lstGhe.GetValue(i, j) })">@seat</a></th>
+
+                    if (lstGhe.GetValue(i, j) != "")
+                    {
+                        seat++;
+                        <th style="background-color: #636161; border: 10px solid #ffffff;"><a style="width:100%; color: #fff" id="lst_Ghe" href="@Url.Action("BookTicket", "Taikhoan", new { iGheID = @lstGhe.GetValue(i, j) })">@seat</a></th>
+                    }
+
                 }
+            </tr>
+        }
+    </table>
 
-            }
-        </tr>
-    }
-</table>
-
+</body>
+</html>

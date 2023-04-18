@@ -17,7 +17,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44375</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -171,6 +171,11 @@
     <Compile Include="Models\TaikhoanEntity.cs" />
     <Compile Include="Models\VeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -179,6 +184,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\FilmDetailStyle.css" />
     <Content Include="Content\IndexStyle.css" />
+    <Content Include="Content\ListSeatStyle.css" />
+    <Content Include="Content\MovieshowtimeList.css" />
     <Content Include="Content\phiminsertstyle.css" />
     <Content Include="Content\StyleSheet.css" />
     <Content Include="favicon.ico" />
@@ -190,6 +197,10 @@
     <Content Include="Image\media_images_2023_02_17_400x633-1-141958-170223-98.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\IndexJS.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

@@ -9,7 +9,9 @@ namespace EudoraCinema.Controllers
 {
     public class TaikhoanController : Controller
     {
-        private const string http_base = "https://localhost:44313/";
+        //http://192.168.1.10:8043/api/TaikhoanAPI/hoainhoc101@gmail.com/Thuhoai@123
+        //https://localhost:44313/
+        private const string http_base = "http://192.168.1.60:8043/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string direct_Timeshow = "api/LichchieuAPI/";
