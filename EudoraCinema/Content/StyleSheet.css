@@ -48,12 +48,11 @@ a {
     float:left;
     margin: 5px;
 }
-.search-bar {
-    position: absolute;
-    width: 20%;
-    right: 60px;
-    top: 30px;
-    color:#ffffff;
+.search-bar {  
+    width: 53%;
+    left: 20%;
+    
+    color: #ffffff;
 }
 
 .search-btn {
@@ -61,4 +60,10 @@ a {
     background-color:#fd890d;
     color:#fff;
     border:none;
+}
+.img-ticket {
+    position: absolute;
+    width: 6%;
+    right: 250px;
+    top: 10px;
 }
