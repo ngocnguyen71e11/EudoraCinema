@@ -14,11 +14,14 @@ namespace EudoraCinema.Controllers
         //https://localhost:44313/
         //https://localhost:5001/api/GheAPI/Payments?sSoDienThoai=0347382190
         //https://localhost:5001/api/PhimAPI/GetByName?sTenphim=a
+        //'https://localhost:5001/api/GheAPI/getghebyphongchieu?FK_iPhongchieuID=2
         private const string http_base = "http://localhost:8043/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string method_Payments = "Payments?sSoDienThoai=";
         private const string method_SearchbyName = "GetByName?sTenphim=";
+        private const string method_GetAllHD = "GetAllHD?sSoDienThoai=";
+        private const string method_GetghebyPhongchieu = "getghebyphongchieu?FK_iPhongchieuID=";
         private const string direct_Timeshow = "api/LichchieuAPI/";
         private const string method_GetAllFilm = "GetAll";
         private const string method_GetFilmCommingSoon = "GetPhimcommingsoon";
@@ -117,20 +120,38 @@ namespace EudoraCinema.Controllers
             }
         }
         //Chức năng đặt vé của phim theo ghế 
-        public ActionResult BookTicket(int iGheID)
+        public ActionResult BookTicket(int iGheID,string sTenghe)
         {
             //'https://localhost:44313/api/GheAPI/bookSticker?PK_Ghe=49&sSoDienThoai=0347382190&PK_iPhongchieuID=1'
             // Gọi API để lấy thông tin chi tiết phim
+            List<GheEntity> lst_Ghe = new List<GheEntity>();
             using (HttpClient httpClient = new HttpClient())
             {
-                //https://localhost:44313/api/PhimAPI/1?PK_iPhimID=1
-                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Ghe + "bookSticker?PK_Ghe=" + iGheID + "&sSoDienThoai=" + Session["IDnguoidung"] + "&PK_iPhongchieuID=" + Session["PK_iLichchieuID"]).Result)
+                //https://localhost:5001/api/GheAPI/bookSticker?PK_Ghe=48&sSoDienThoai=0347382190&PK_iPhongchieuID=3&sTenghe=A7
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Ghe + "bookSticker?PK_Ghe=" + iGheID + "&sSoDienThoai=" + Session["IDnguoidung"] + "&PK_iPhongchieuID=" + Session["PK_iLichchieuID"]+ "&sTenghe="+sTenghe).Result)
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        string jsonData = response.Content.ReadAsStringAsync().Result;
-                        List<HoadonEntity> lstPhim = JsonConvert.DeserializeObject<List<HoadonEntity>>(jsonData);
-                        return View(lstPhim);
+                        bool check = Convert.ToBoolean(response.Content.ReadAsStringAsync().Result);
+                        if(check==true)
+                        {
+                            using (HttpClient httpClient1 = new HttpClient())
+                            {
+                                //api/LichchieuAPI/12
+                                using (HttpResponseMessage response1= httpClient.GetAsync(http_base +direct_Ghe+ method_GetghebyPhongchieu+ Session["FK_iPhongchieuID"]).Result)
+                                {
+                                    if (response1.IsSuccessStatusCode)
+                                    {
+                                        string jsonData = response1.Content.ReadAsStringAsync().Result;
+                                        lst_Ghe = JsonConvert.DeserializeObject<List<GheEntity>>(jsonData);
+                                        TempData["Message_themghe"] = "Đặt ghế thành công!";
+                                        return View("ListSeats",lst_Ghe);
+                                    }
+                                }
+                                // Nếu không lấy được thông tin phim từ API, trả về trang 404
+                                return HttpNotFound();
+                            }
+                        }    
                     }
                 }
                 // Nếu không lấy được thông tin phim từ API, trả về trang 404
@@ -247,6 +268,27 @@ namespace EudoraCinema.Controllers
                     }
                 }
                 return HttpNotFound();
+            }
+        }
+        public ActionResult ListHoaDonByName()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //httpClient.BaseAddress = new Uri(UriString);
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Ghe + method_GetAllHD + Session["IDnguoidung"]).Result)
+                {
+                    if(response.IsSuccessStatusCode)
+                    {
+                        string jsonData = response.Content.ReadAsStringAsync().Result;
+                        List<HoadonEntity> lstPhim = JsonConvert.DeserializeObject<List<HoadonEntity>>(jsonData);
+                        return View("BookTicket",lstPhim);
+                    }
+                    else
+                    {
+                        TempData["Message"] = "Không có hóa đơn nào cả!";
+                        return RedirectToAction("HomePage");
+                    }    
+                }
             }
         }
     }

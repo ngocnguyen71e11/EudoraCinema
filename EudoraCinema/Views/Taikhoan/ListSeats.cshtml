@@ -18,7 +18,8 @@
     </div>
 
     @{
-        int seat = 0;
+        int seat=64;
+        string nameghe = "";
         string[,] lstGhe = new string[20, 20];
         for (int i = 1; i < 20; i++)
         {
@@ -31,34 +32,49 @@
         {
             int cot = Convert.ToInt32(item.iCot);
             int day = Convert.ToInt32(item.iDay);
-            if (item.isTrangthai==true)
+            if (item.isTrangthai == true)
             {
-                lstGhe[day,cot] = "đã đặt";
+                lstGhe[day, cot] = "Đã đặt";
             }
-            else
+            else if (item.bCho == true)
             {
-                lstGhe[day,cot] = Convert.ToString(item.PK_iGheID);
+                lstGhe[day, cot] = "Chờ";
+            }
+            else if (item.isTrangthai == false)
+            {
+                lstGhe[day, cot] = Convert.ToString(item.PK_iGheID);
             }
 
+
         }
+    }
+    @if (TempData["Message_themghe"] != null)
+    {
+        <div class="alert alert-success">@TempData["Message_themghe"]</div>
     }
     <table style="margin-left:300px; ">
         @for (int i = 1; i < 20; i++)
         {
+            seat++;
             <tr>
                 @for (int j = 1; j < 20; j++)
                 {
-
+                    nameghe = Convert.ToChar(seat) + j.ToString();
                     if (lstGhe.GetValue(i, j) != "")
                     {
-                        seat++;
-                        if (lstGhe.GetValue(i, j) == "đã đặt")
+
+                        if (lstGhe.GetValue(i, j) == "Đã đặt")
                         {
-                            <th style="background-color: red; border: 10px solid #ffffff;"><a style="width:100%; color: #fff" id=@lstGhe.GetValue(i, j)>@seat</a></th>
+
+                            <th style="background-color: red; border: 10px solid #ffffff;"><a style="width:100%; color: #fff">@nameghe</a></th>
+                        }
+                        else if (lstGhe.GetValue(i, j) == "Chờ")
+                        {
+                            <th style="background-color: yellow; border: 10px solid #ffffff;"><a style="width:100%; color: #fff">@nameghe</a></th>
                         }
                         else
                         {
-                            <th style="background-color: #636161; border: 10px solid #ffffff;"><a @*onclick="getIDAll()"*@ id="ghe_selected" name=@lstGhe.GetValue(i, j) style="width:100%; color: #fff"  href="@Url.Action("BookTicket", "Taikhoan", new { iGheID = @lstGhe.GetValue(i, j)})">@seat</a></th>
+                            <th style="background-color: #636161; border: 10px solid #ffffff;"><a id="ghe_selected" style="width:100%; color: #fff" href="@Url.Action("BookTicket", "Taikhoan", new { iGheID = @lstGhe.GetValue(i,j),sTenghe=nameghe})">@nameghe</a></th>
                         }
 
                     }
@@ -67,16 +83,6 @@
             </tr>
         }
     </table>
-    <button id="booklistve" onclick="Themhangloat">Thêm vé</button>
-    @*<script>
-        //var lst_id = [];
-        //function getIDAll()
-        //{
-        //    var id_gheselect = document.querySelectorAll("#ghe_selected");
-        //    var value = id_gheselect.Name;
-        //    lst_id.push(value);
-        //}
-        //console.log(lst_id);
-    </script>*@
+    <button id="booklistve"><a href="@Url.Action("ListHoaDonByName", "Taikhoan")">Thanh toán ngay</a></button>
 </body>
 </html>

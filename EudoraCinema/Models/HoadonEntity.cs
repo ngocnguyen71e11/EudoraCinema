@@ -10,6 +10,7 @@ namespace EudoraCinema.Models
         private string m_hGiochieu;
         private int m_FK_iPhongchieuID;
         private int m_FK_iGheID;
+        private string m_sTenghe;
 
         public string sTenphim { get => m_sTenphim; set => m_sTenphim = value; }
         public string sThoiluong { get => m_sThoiluong; set => m_sThoiluong = value; }
@@ -17,6 +18,7 @@ namespace EudoraCinema.Models
         public string hGiochieu { get => m_hGiochieu; set => m_hGiochieu = value; }
         public int FK_iPhongchieuID { get => m_FK_iPhongchieuID; set => m_FK_iPhongchieuID = value; }
         public int FK_iGheID { get => m_FK_iGheID; set => m_FK_iGheID = value; }
+        public string sTenghe { get => m_sTenghe; set => m_sTenghe = value; }
         // private int 
     }
 }
