@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "HomePage";
+
 }
 
 <!DOCTYPE html>
@@ -55,6 +56,10 @@
                     <button style="height:50px" class="btn btn-muave"><a style="color:#ffffff" href="@Url.Action("MovieshowtimeList", "Taikhoan", new { id = item.PK_iPhimID,sTenphim = item.sTenphim })">MUA VÉ</a></button>
                 </div>
             }
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-success">@TempData["Message"]</div>
+            }
         </div>
 
 
@@ -76,6 +81,7 @@
 
             elements[i].parentNode.insertBefore(img, elements[i].nextSibling);
         }
+
     </script>
 
 </body>
