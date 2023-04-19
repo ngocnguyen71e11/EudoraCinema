@@ -14,7 +14,7 @@ namespace EudoraCinema.Controllers
         //https://localhost:44313/
         //https://localhost:5001/api/GheAPI/Payments?sSoDienThoai=0347382190
         //https://localhost:5001/api/PhimAPI/GetByName?sTenphim=a
-        private const string http_base = "http://localhost:8043/";
+        private const string http_base = "https://localhost:44313/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string method_Payments = "Payments?sSoDienThoai=";
@@ -65,6 +65,10 @@ namespace EudoraCinema.Controllers
                     return View();
                 }
             }
+        } 
+        public ActionResult Register(FormCollection collection)
+        {
+            return View();
         }
 
         public ActionResult Logout() { return View(); }

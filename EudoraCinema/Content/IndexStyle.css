@@ -33,3 +33,17 @@
 a:hover {
     color: orange !important;
 }
+#bg-alert {
+    width: 100vw;
+    height: 100vh;
+    background-color: #808080;
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ct-alert {
+    background-color: orangered;
+    padding: 20px;
+}
