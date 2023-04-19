@@ -10,7 +10,11 @@
     }
     /* Make sure there's enough space below the table */
     .table-container {
-        margin-bottom: 100px;
+        width: 800px;
+        background-color: ghostwhite;
+        border-radius: 8px;
+        border: 1px solid cornflowerblue;
+        margin-left: 15%;
     }
     /* Style the button */
     .btn-pay {
@@ -30,26 +34,40 @@
         transform: translateX(-50%);
         z-index: 1;
     }
+    .sum-hoadon {
+        padding-left: 80%;
+        color: orangered;
+    }
+    .container.body-content {
+        height: 100vh !important;
+    }
+
+    .footer {
+        position: sticky;
+        bottom: 0;
+    }
 </style>
 <div style=" display:flex;color:orange; font-size:25px">
     <a style="color:orange;" href="@Url.Action("HomePage", "Taikhoan")">TRANG CHỦ</a>||<a style="color: orange;" href="@Url.Action("BookTickets", "Taikhoan")">HÓA ĐƠN</a>
 </div>
 <div class="table-container">
-    <table style="margin-left:400px; padding:100px;">
+    <h5 style="padding-left:35%;">HÓA ĐƠN THANH TOÁN</h5>
+    <table class="table">
         <tr style="font-size:larger">
-            <th>STT</th>
-            <th>Tên phim </th>
-            <th>Thời lượng</th>
-            <th>Ngày chiếu</th>
-            <th>Giờ</th>
-            <th>Phòng</th>
-            <th>Ghế</th>
+            <th scope="col">STT</th>
+            <th scope="col">Tên phim </th>
+            <th scope="col">Thời lượng</th>
+            <th scope="col">Ngày chiếu</th>
+            <th scope="col">Giờ</th>
+            <th scope="col">Phòng</th>
+            <th scope="col">Ghế</th>
+            <th scope="col">Giá vé</th>
         </tr>
         @foreach (EudoraCinema.Models.HoadonEntity item in Model)
         {
 
             <tr style="text-align:center; font-weight:100">
-                <th>@dem</th>
+                <th scope="row">@dem</th>
                 <th>@item.sTenphim </th>
                 <th>@item.sThoiluong</th>
                 <th>@item.tNgaybatdau.Date.ToString("dd/M/yyyy")</th>
@@ -61,7 +79,8 @@
             dem++;
         }
     </table>
-    <div>
+    <div class="sum-hoadon">
+        <label>Tổng tiền</label>
         @{tongtien = (dem-1) * 50000; }
         @tongtien
     </div>

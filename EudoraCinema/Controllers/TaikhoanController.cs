@@ -10,12 +10,11 @@ namespace EudoraCinema.Controllers
 {
     public class TaikhoanController : Controller
     {
-        //http://192.168.1.10:8043/api/TaikhoanAPI/hoainhoc101@gmail.com/Thuhoai@123
+        //http://192.168.1.8:8043/api/TaikhoanAPI/hoainhoc101@gmail.com/Thuhoai@123
         //https://localhost:44313/
         //https://localhost:5001/api/GheAPI/Payments?sSoDienThoai=0347382190
         //https://localhost:5001/api/PhimAPI/GetByName?sTenphim=a
-        //'https://localhost:5001/api/GheAPI/getghebyphongchieu?FK_iPhongchieuID=2
-        private const string http_base = "http://localhost:8043/";
+        private const string http_base = "https://localhost:44313/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string method_Payments = "Payments?sSoDienThoai=";
@@ -68,6 +67,10 @@ namespace EudoraCinema.Controllers
                     return View();
                 }
             }
+        } 
+        public ActionResult Register(FormCollection collection)
+        {
+            return View();
         }
 
         public ActionResult Logout() { return View(); }
@@ -101,6 +104,10 @@ namespace EudoraCinema.Controllers
         public ActionResult MovieshowtimeList(int id)
         {
             //Session["PK_iPhimID"] = sTenphim;
+            if (Session["IDnguoidung"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             Session["PK_iLichchieuID"] = id;
             // Gọi API để lấy thông tin chi tiết phim
             using (HttpClient httpClient = new HttpClient())

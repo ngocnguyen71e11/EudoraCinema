@@ -36,9 +36,9 @@
             </button>
         </div>
         <div style="display: flex; padding-left:25%;">
-            <div  style="font-weight: 500"><a href="@Url.Action("FilmCommingSoon", "Taikhoan")">PHIM SẮP CHIẾU</a></div>
-            <div  style="font-weight: 500"><a style="color:orange" href="@Url.Action("HomePage", "Taikhoan")">PHIM ĐANG CHIẾU</a></div>
-            <div  style="font-weight: 500"><a href="@Url.Action("HomePage", "Taikhoan")">SUẤT CHIẾU ĐẶC BIỆT</a></div>
+            <div style="font-weight: 500"><a href="@Url.Action("FilmCommingSoon", "Taikhoan")">PHIM SẮP CHIẾU</a></div>
+            <div style="font-weight: 500"><a style="color:orange" href="@Url.Action("HomePage", "Taikhoan")">PHIM ĐANG CHIẾU</a></div>
+            <div style="font-weight: 500"><a href="@Url.Action("HomePage", "Taikhoan")">SUẤT CHIẾU ĐẶC BIỆT</a></div>
         </div>
         <div class="list-phim_around">
             @foreach (EudoraCinema.Models.PhimEntity item in Model)
@@ -54,13 +54,14 @@
                     <div>@item.sThoiluong</div>
                     <div>@item.sDaodien</div>
                     <button style="height:50px" class="btn btn-muave"><a style="color:#ffffff" href="@Url.Action("MovieshowtimeList", "Taikhoan", new { id = item.PK_iPhimID,sTenphim = item.sTenphim })">MUA VÉ</a></button>
+
                 </div>
             }
-            @if (TempData["Message"] != null)
-            {
-                <div class="alert alert-success">@TempData["Message"]</div>
-            }
+
+
+
         </div>
+
 
 
     </div>
@@ -81,9 +82,26 @@
 
             elements[i].parentNode.insertBefore(img, elements[i].nextSibling);
         }
-
     </script>
+    @if (TempData["Message"] != null)
+    {
+        <div id="content" style="position: absolute; width: 500px; height: 60px; padding-top:10px; text-align: center; font-size: 25px; font-weight:700; top: 50%; left: 30%; background-color: #ffffff; color: #ff6600">
+            @TempData["Message"]
+        </div>
 
+        <script type="text/javascript">
+            var divElement = document.getElementById("content");
+
+            setTimeout(function () {
+                divElement.classList.add("hidden");
+            }, 5000);
+        </script>
+        <style>
+            .hidden {
+                display: none;
+            }
+        </style>
+    }
 </body>
 </html>
 

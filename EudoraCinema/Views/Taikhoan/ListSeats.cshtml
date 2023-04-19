@@ -4,13 +4,32 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/ListSeatStyle.css" rel="stylesheet" />
+    @*<link href="~/Content/ListSeatStyle.css" rel="stylesheet" />*@
     <title>Đặt vé</title>
 </head>
 <body>
     <style>
         a:hover {
-            background-color: orange;
+            color: orange;
+        }
+        .ghe-detail_on {
+            width: 50px;
+            height: 50px;
+            background-color: #636161;
+        }
+        .ghe-detail_off {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+        .ghe-detail_wait {
+            width: 50px;
+            height: 50px;
+            background-color: #ffd800;
+        }
+        .ghe-detail {
+            padding: 20px;
+            padding-top:20px;
         }
     </style>
     <div style=" display:flex;color:orange; font-size:25px">
@@ -83,6 +102,23 @@
             </tr>
         }
     </table>
+    <div style="display: flex; padding-left: 40%;padding-top:5%; ">
+        <div class="ghe-detail">
+            <label>Ghế trống</label>
+            <div class="ghe-detail_on"></div>
+        </div>
+        <div class="ghe-detail">
+            <label>Ghế đã đặt</label>
+            <div class="ghe-detail_off" ></div>
+        </div>
+        <div class="ghe-detail">
+            <label>Ghế chờ</label>
+            <div class="ghe-detail_wait"></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('seat-off').disabled = false;
+    </script>
     <button id="booklistve"><a href="@Url.Action("ListHoaDonByName", "Taikhoan")">Thanh toán ngay</a></button>
 </body>
 </html>

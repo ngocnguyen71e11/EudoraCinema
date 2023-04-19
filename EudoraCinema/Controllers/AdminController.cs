@@ -9,7 +9,7 @@ namespace EudoraCinema.Controllers
     public class AdminController : Controller
     {
 
-        private const string url_base = "http://localhost:44313/";
+        private const string url_base = "http://192.168.1.8:8043/";
         private const string direct_insertFilm = "api/PhimAPI";
         // GET: Admin
         //5 [HttpPost]
