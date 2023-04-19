@@ -13,15 +13,15 @@ namespace EudoraCinema.Controllers
         //http://192.168.1.10:8043/api/TaikhoanAPI/hoainhoc101@gmail.com/Thuhoai@123
         //https://localhost:44313/
         //https://localhost:5001/api/GheAPI/Payments?sSoDienThoai=0347382190
+        //https://localhost:5001/api/PhimAPI/GetByName?sTenphim=a
         private const string http_base = "http://localhost:8043/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string method_Payments = "Payments?sSoDienThoai=";
+        private const string method_SearchbyName = "GetByName?sTenphim=";
         private const string direct_Timeshow = "api/LichchieuAPI/";
         private const string method_GetAllFilm = "GetAll";
         private const string method_GetFilmCommingSoon = "GetPhimcommingsoon";
-        private const string method_GetFilmbyID = "GetPhimbyID/";
-        private const string method_GetFilmbyName = "GetByName/";
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
 
         // GET: Taikhoan
@@ -230,12 +230,12 @@ namespace EudoraCinema.Controllers
             }
          
         }
-
+        [HttpGet]
         public ActionResult GetFilmByName(string sTenphim)
         {
             using (HttpClient httpClient = new HttpClient())
             {
-                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Film + method_GetFilmbyName + sTenphim).Result)
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Film + method_SearchbyName + sTenphim).Result)
                 {
                     if (response.IsSuccessStatusCode)
                     {

@@ -36,15 +36,15 @@
             </nav>
         </div>
     </div>
-    @*<form action="@Url.Action("GetFilmByName", "Taikhoan")" method="get" class="input-group mb-3 search-bar">
+    <form action="@Url.Action("GetFilmByName", "Taikhoan")" method="get" class="input-group mb-3 search-bar">
             <input name="sTenphim" type="text" id="inputValue" class="form-control search-input" placeholder="Tìm kiếm" >
             <button type="submit" id="submitBtn" class="btn btn-outline-secondary search-btn">Search</button>
-        </form>*@
-    @using (Html.BeginForm("GetFilmByName", "Taikhoan", FormMethod.Get))
+        </form>
+    @*@using (Html.BeginForm("GetFilmByName", "Taikhoan", FormMethod.Get))
     {
         <input type="text" name="sTenphim" placeholder="Nhập tên phim...">
         <button type="submit">Tìm kiếm</button>
-    }
+    }*@
 
     <hr />
     <div class="container body-content">
@@ -55,5 +55,25 @@
     <footer class="footer">
         <p>&copy; @DateTime.Now.Year - Eudora Cinema - Quà tặng từ thiên đường</p>
     </footer>
+    <script>
+        $(document).ready(function () {
+            $('#submitBtn').click(function (event) {
+                event.preventDefault();
+                var inputValue = $('#inputValue').val();
+
+                $.ajax({
+                    url: '/Taikhoan/GetFilmByName',
+                    type: 'POST', // Thay đổi phương thức gửi dữ liệu sang POST
+                    data: { sTenphim: inputValue },
+                    success: function (result) {
+                        // Xử lý kết quả trả về từ Controller
+                    },
+                    error: function () {
+                        // Xử lý lỗi khi thực hiện yêu cầu Ajax
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

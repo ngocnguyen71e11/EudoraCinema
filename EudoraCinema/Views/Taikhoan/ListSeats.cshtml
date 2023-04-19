@@ -58,7 +58,7 @@
                         }
                         else
                         {
-                            <th style="background-color: #636161; border: 10px solid #ffffff;"><a @*onclick="getIDAll()"*@ id="ghe_selected" name=@lstGhe.GetValue(i, j) style="width:100%; color: #fff"  href="@Url.Action("BookTicket", "Taikhoan", new { iGheID = @lstGhe.GetValue(i, j) })">@seat</a></th>
+                            <th style="background-color: #636161; border: 10px solid #ffffff;"><a @*onclick="getIDAll()"*@ id="ghe_selected" name=@lstGhe.GetValue(i, j) style="width:100%; color: #fff"  href="@Url.Action("BookTicket", "Taikhoan", new { iGheID = @lstGhe.GetValue(i, j)})">@seat</a></th>
                         }
 
                     }
@@ -67,7 +67,7 @@
             </tr>
         }
     </table>
-    @*<button onclick="Themhangloat">Thêm vé</button>*@
+    <button id="booklistve" onclick="Themhangloat">Thêm vé</button>
     @*<script>
         //var lst_id = [];
         //function getIDAll()
