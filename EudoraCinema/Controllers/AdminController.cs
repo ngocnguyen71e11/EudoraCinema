@@ -1,11 +1,7 @@
 ﻿using EudoraCinema.Models;
-using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EudoraCinema.Controllers
@@ -13,7 +9,7 @@ namespace EudoraCinema.Controllers
     public class AdminController : Controller
     {
 
-        private const string url_base = "https://localhost:44313/";
+        private const string url_base = "http://localhost:44313/";
         private const string direct_insertFilm = "api/PhimAPI";
         // GET: Admin
         //5 [HttpPost]

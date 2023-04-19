@@ -1,10 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "BookTicket";
+    long dem = 1;
 }
 <style>
-    th{
-        padding-left:20px;
+    th {
+        padding-left: 20px;
     }
     /* Make sure there's enough space below the table */
     .table-container {
@@ -13,8 +14,8 @@
 
     /* Style the button */
     .btn-pay {
-        width:400px;
-        height:40px;
+        width: 400px;
+        height: 40px;
         text-align: center;
         font-weight: 700;
         background-color: orange;
@@ -36,20 +37,28 @@
         <tr style="font-size:larger">
             <th>STT</th>
             <th>Tên phim </th>
-            <th>Số Ghế</th>
-            <th>Phòng chiếu</th>
+            <th>Thời lượng</th>
+            <th>Ngày chiếu</th>
+            <th>Giờ</th>
+            <th>Phòng</th>
+            <th>Ghế</th>
         </tr>
-        @foreach (EudoraCinema.Models.VeEntity item in Model)
+        @foreach (EudoraCinema.Models.HoadonEntity item in Model)
         {
 
             <tr style="text-align:center; font-weight:100">
-                <th>@(Model.IndexOf(item) + 1)</th>
-                <th>@Session["PK_iPhimID"] </th>
-                <th>@item.FK_iGheID</th>
+                <th>@dem</th>
+                <th>@item.sTenphim </th>
+                <th>@item.sThoiluong</th>
+                <th>@item.tNgaybatdau.Date.ToString("dd/M/yyyy")</th>
+                <th>@item.hGiochieu</th>
                 <th>@item.FK_iPhongchieuID</th>
+                <th>@item.FK_iGheID</th>
             </tr>
+            dem++;
         }
     </table>
 </div>
-<button class="btn-pay btn btn-muave">Thanh toán</button>
+@*<button class="btn-pay btn btn-muave">Thanh toán</button>*@
+<a href="@Url.Action("setStatusSeat", "Taikhoan")" ><button class="btn-pay btn btn-muave">Thanh toán</button></a>
 
