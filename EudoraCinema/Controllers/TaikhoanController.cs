@@ -96,6 +96,10 @@ namespace EudoraCinema.Controllers
         public ActionResult MovieshowtimeList(int id)
         {
             //Session["PK_iPhimID"] = sTenphim;
+            if (Session["IDnguoidung"] == null)
+            {
+                return RedirectToAction("Login");
+            }
             Session["PK_iLichchieuID"] = id;
             // Gọi API để lấy thông tin chi tiết phim
             using (HttpClient httpClient = new HttpClient())
