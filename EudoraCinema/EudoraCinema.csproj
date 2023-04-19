@@ -199,6 +199,7 @@
     <Content Include="Image\Icon.png" />
     <Content Include="Image\logo.png" />
     <Content Include="Image\media_images_2023_02_17_400x633-1-141958-170223-98.jpg" />
+    <Content Include="Image\Tickets.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\Settings.settings">
