@@ -49,6 +49,8 @@ namespace EudoraCinema.Controllers
                         if (response.IsSuccessStatusCode)
                         {
                             Session["IDnguoidung"] = Convert.ToString(response.Content.ReadAsStringAsync().Result);
+                            if(Session["IDnguoidung"]=="")
+                            return View();
                             return RedirectToAction("HomePage");
                         }
                         else
