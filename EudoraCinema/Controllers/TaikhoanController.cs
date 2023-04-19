@@ -11,13 +11,14 @@ namespace EudoraCinema.Controllers
     {
         //http://192.168.1.10:8043/api/TaikhoanAPI/hoainhoc101@gmail.com/Thuhoai@123
         //https://localhost:44313/
-        private const string http_base = "http://192.168.1.60:8043/";
+        private const string http_base = "https://localhost:44313/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string direct_Timeshow = "api/LichchieuAPI/";
         private const string method_GetAllFilm = "GetAll";
         private const string method_GetFilmCommingSoon = "GetPhimcommingsoon";
         private const string method_GetFilmbyID = "GetPhimbyID/";
+        private const string method_GetFilmbyName = "GetByName/";
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
 
         // GET: Taikhoan
@@ -199,6 +200,23 @@ namespace EudoraCinema.Controllers
                 }
             }
 
+        }
+
+        public ActionResult GetFilmByName(string sTenphim)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Film + method_GetFilmbyName + sTenphim).Result)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonData = response.Content.ReadAsStringAsync().Result;
+                        List<PhimEntity> lstPhim = JsonConvert.DeserializeObject<List<PhimEntity>>(jsonData);
+                        return View("HomePage", lstPhim);
+                    }
+                }
+                return HttpNotFound();
+            }
         }
     }
 }

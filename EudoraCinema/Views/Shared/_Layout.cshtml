@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    string timkiem;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,29 +23,35 @@
                     <img src="~/Image/logo.png" style="height:65px; width:120px;" />
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item nav-link">@Html.ActionLink("LỊCH CHIẾU", "HomePage", "Home")</li>
-                            <li class="nav-item nav-link">@Html.ActionLink("PHIM", "HomePage", "Home")</li>
-                            <li class="nav-item nav-link">@Html.ActionLink("GIÁ VÉ", "About", "Home")</li>
-                            <li class="nav-item nav-link">@Html.ActionLink("TIN MỚI VÀ ƯU ĐÃI", "About", "Home")</li>
-                            <li class="nav-item nav-link">@Html.ActionLink("THÀNH VIÊN", "About", "Home")</li>
+                            <li class="nav-item nav-link"><a href="@Url.Action("HomePage", "Taikhoan")">LỊCH CHIẾU</a></li>
+                            <li class="nav-item nav-link"><a href="@Url.Action("HomePage", "Taikhoan")">PHIM</a></li>
+                            <li class="nav-item nav-link"><a href="@Url.Action("HomePage", "Taikhoan")">GIÁ VÉ</a></li>
+                            <li class="nav-item nav-link"><a href="@Url.Action("HomePage", "Taikhoan")">TIN MỚI VÀ ƯU ĐÃI</a></li>
+                            <li class="nav-item nav-link"><a href="@Url.Action("HomePage", "Taikhoan")">THÀNH VIÊN</a></li>
+                            <li>
+                            </li>
                         </ul>
                     </div>
-                    @*<div class="collapse navbar-collapse" id="navbarTogglerDemo03" style="padding-left: 92px;">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item nav-link">@Html.ActionLink("ĐĂNG NHẬP", "Login", "Home")</li>
-                            <li class="nav-item nav-link">@Html.ActionLink("ĐĂNG KÝ", "Register", "Home")</li>
-                        </ul>
-                    </div>*@
                 </div>
             </nav>
         </div>
     </div>
+    @*<form action="@Url.Action("GetFilmByName", "Taikhoan")" method="get" class="input-group mb-3 search-bar">
+            <input name="sTenphim" type="text" id="inputValue" class="form-control search-input" placeholder="Tìm kiếm" >
+            <button type="submit" id="submitBtn" class="btn btn-outline-secondary search-btn">Search</button>
+        </form>*@
+    @using (Html.BeginForm("GetFilmByName", "Taikhoan", FormMethod.Get))
+    {
+        <input type="text" name="sTenphim" placeholder="Nhập tên phim...">
+        <button type="submit">Tìm kiếm</button>
+    }
+
     <hr />
     <div class="container body-content">
         @RenderBody()
-        <br/>
+        <br />
     </div>
-    <hr />
+
     <footer class="footer">
         <p>&copy; @DateTime.Now.Year - Eudora Cinema - Quà tặng từ thiên đường</p>
     </footer>

@@ -13,7 +13,9 @@
             background-color: orange;
         }
     </style>
-    <h3 style="color:orange">TRANG CHỦ > ĐẶT VÉ</h3>
+    <div style=" display:flex;color:orange; font-size:25px">
+        <a style="color:orange;" href="@Url.Action("HomePage", "Taikhoan")">TRANG CHỦ</a>||<a style="color: orange;" href="@Url.Action("ListSeats", "Taikhoan")">CHỌN GHẾ</a>
+    </div>
 
     @{
         int seat = 0;
