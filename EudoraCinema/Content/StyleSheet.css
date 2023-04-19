@@ -48,4 +48,17 @@ a {
     float:left;
     margin: 5px;
 }
+.search-bar {
+    position: absolute;
+    width: 20%;
+    right: 60px;
+    top: 30px;
+    color:#ffffff;
+}
 
+.search-btn {
+    width: 80px;
+    background-color:#fd890d;
+    color:#fff;
+    border:none;
+}

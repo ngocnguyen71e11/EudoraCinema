@@ -21,8 +21,9 @@
     }
 </style>
 <body>
-    <h3 style="color:orange">Trang chủ > Danh sách lịch chiếu</h3>
-
+    <div style=" display:flex;color:orange; font-size:25px">
+        <a style="color:orange;" href="@Url.Action("HomePage", "Taikhoan")">TRANG CHỦ</a>||<a style="color: orange;" href="@Url.Action("HomePage", "Taikhoan")">DANH SÁCH LỊCH CHIẾU</a>
+    </div>
     @foreach (EudoraCinema.Models.LichchieuEntity item in Model)
     {
 

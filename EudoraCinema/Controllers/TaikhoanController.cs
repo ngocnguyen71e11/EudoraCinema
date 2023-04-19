@@ -21,6 +21,7 @@ namespace EudoraCinema.Controllers
         private const string method_GetAllFilm = "GetAll";
         private const string method_GetFilmCommingSoon = "GetPhimcommingsoon";
         private const string method_GetFilmbyID = "GetPhimbyID/";
+        private const string method_GetFilmbyName = "GetByName/";
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
 
         // GET: Taikhoan
@@ -228,6 +229,23 @@ namespace EudoraCinema.Controllers
                 }
             }
          
+        }
+
+        public ActionResult GetFilmByName(string sTenphim)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Film + method_GetFilmbyName + sTenphim).Result)
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonData = response.Content.ReadAsStringAsync().Result;
+                        List<PhimEntity> lstPhim = JsonConvert.DeserializeObject<List<PhimEntity>>(jsonData);
+                        return View("HomePage", lstPhim);
+                    }
+                }
+                return HttpNotFound();
+            }
         }
     }
 }
