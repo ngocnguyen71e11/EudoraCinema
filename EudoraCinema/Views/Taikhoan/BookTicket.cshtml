@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "BookTicket";
     long dem = 1;
+    long tongtien;
 }
 <style>
     th {
@@ -56,10 +57,15 @@
                 <th>@item.hGiochieu</th>
                 <th>@item.FK_iPhongchieuID</th>
                 <th>@item.FK_iGheID</th>
+                <th>50.000đ</th>
             </tr>
             dem++;
         }
     </table>
+    <div>
+        @{tongtien = (dem-1) * 50000; }
+        @tongtien
+    </div>
 </div>
 @*<button class="btn-pay btn btn-muave">Thanh toán</button>*@
 <a href="@Url.Action("setStatusSeat", "Taikhoan")" ><button class="btn-pay btn btn-muave">Thanh toán</button></a>
