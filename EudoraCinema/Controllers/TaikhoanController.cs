@@ -14,7 +14,7 @@ namespace EudoraCinema.Controllers
         //https://localhost:44313/
         //https://localhost:5001/api/GheAPI/Payments?sSoDienThoai=0347382190
         //https://localhost:5001/api/PhimAPI/GetByName?sTenphim=a
-        private const string http_base = "http://172.20.1.18:8043/";
+        private const string http_base = "http://192.168.1.18:8043/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string method_Payments = "Payments?sSoDienThoai=";
@@ -302,26 +302,26 @@ namespace EudoraCinema.Controllers
         {
             return View();
         }
-        public ActionResult ListHoaDonByName()
-        {
-            using (HttpClient httpClient = new HttpClient())
-            {
-                //httpClient.BaseAddress = new Uri(UriString);
-                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Ghe + method_GetAllHD + Session["IDnguoidung"]).Result)
-                {
-                    if(response.IsSuccessStatusCode)
-                    {
-                        string jsonData = response.Content.ReadAsStringAsync().Result;
-                        List<HoadonEntity> lstPhim = JsonConvert.DeserializeObject<List<HoadonEntity>>(jsonData);
-                        return View("BookTicket",lstPhim);
-                    }
-                    else
-                    {
-                        TempData["Message"] = "Không có hóa đơn nào cả!";
-                        return RedirectToAction("HomePage");
-                    }    
-                }
-            }
-        }
+        //public ActionResult ListHoaDonByName()
+        //{
+        //    using (HttpClient httpClient = new HttpClient())
+        //    {
+        //        //httpClient.BaseAddress = new Uri(UriString);
+        //        using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Ghe + method_GetAllHD + Session["IDnguoidung"]).Result)
+        //        {
+        //            if(response.IsSuccessStatusCode)
+        //            {
+        //                string jsonData = response.Content.ReadAsStringAsync().Result;
+        //                List<HoadonEntity> lstPhim = JsonConvert.DeserializeObject<List<HoadonEntity>>(jsonData);
+        //                return View("BookTicket",lstPhim);
+        //            }
+        //            else
+        //            {
+        //                TempData["Message"] = "Không có hóa đơn nào cả!";
+        //                return RedirectToAction("HomePage");
+        //            }    
+        //        }
+        //    }
+        //}
     }
 }
