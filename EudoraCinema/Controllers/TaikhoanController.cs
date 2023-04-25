@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Text;
 using System.Web.Mvc;
 
 namespace EudoraCinema.Controllers
@@ -14,7 +15,7 @@ namespace EudoraCinema.Controllers
         //https://localhost:44313/
         //https://localhost:5001/api/GheAPI/Payments?sSoDienThoai=0347382190
         //https://localhost:5001/api/PhimAPI/GetByName?sTenphim=a
-        private const string http_base = "http://192.168.1.18:8043/";
+        private const string http_base = "https://localhost:5001/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string method_Payments = "Payments?sSoDienThoai=";
@@ -27,9 +28,14 @@ namespace EudoraCinema.Controllers
         private const string direct_Taikhoan = "api/TaikhoanAPI/";
 
         // GET: Taikhoan
-        public ActionResult Init()
+        public HttpClient BasicAuthentication(String username, String password)
         {
-            return View("Login");
+            HttpClient client = new HttpClient();
+            string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
+
+            // Đặt tiêu đề Authorization
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", credentials);
+            return client;
         }
         //Chức năng đăng nhập
 
@@ -40,10 +46,11 @@ namespace EudoraCinema.Controllers
             {
                 return View();
             }
-            using (HttpClient httpClient = new HttpClient())
+            string Email = collection["sEmail"];
+            string Pass = collection["sMatkhau"];
+            using (HttpClient httpClient = BasicAuthentication(Email, Pass))
             {
-                string Email = collection["sEmail"];
-                string Pass = collection["sMatkhau"];
+
                 try
                 {
                     using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Taikhoan + Email + "/" + Pass).Result)
@@ -51,7 +58,9 @@ namespace EudoraCinema.Controllers
                         if (response.IsSuccessStatusCode)
                         {
                             Session["IDnguoidung"] = Convert.ToString(response.Content.ReadAsStringAsync().Result);
-                            if(Session["IDnguoidung"]=="")
+                            //  String id = Convert.ToString( Session["IDnguoidung"]);
+                            //Session["Matkhau"] = collection["sMatkhau"];
+                            if (Session["IDnguoidung"]=="")
                             return View();
                             return RedirectToAction("HomePage");
                         }
@@ -68,12 +77,15 @@ namespace EudoraCinema.Controllers
                 }
             }
         } 
-        public ActionResult Register(FormCollection collection)
-        {
-            return View();
-        }
 
-        public ActionResult Logout() { return View(); }
+        public ActionResult Logout() 
+        {
+            //Session["Matkhau"] = "";
+            //Session.RemoveAll();
+            Session.Abandon();
+            //Session["IDnguoidung"] = "";
+            return RedirectToAction("Login");
+        }
 
         //Chức năng hiển thị trang chủ
 
