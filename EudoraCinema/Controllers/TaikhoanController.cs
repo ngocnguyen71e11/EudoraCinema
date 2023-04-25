@@ -10,11 +10,11 @@ namespace EudoraCinema.Controllers
 {
     public class TaikhoanController : Controller
     {
-        //http://192.168.1.8:8043/api/TaikhoanAPI/hoainhoc101@gmail.com/Thuhoai@123
+        //http://172.20.10.2:8043/api/TaikhoanAPI/hoainhoc101@gmail.com/Thuhoai@123
         //https://localhost:44313/
         //https://localhost:5001/api/GheAPI/Payments?sSoDienThoai=0347382190
         //https://localhost:5001/api/PhimAPI/GetByName?sTenphim=a
-        private const string http_base = "https://localhost:44313/";
+        private const string http_base = "http://172.20.1.18:8043/";
         private const string direct_Film = "api/PhimAPI/";
         private const string direct_Ghe = "api/GheAPI/";
         private const string method_Payments = "Payments?sSoDienThoai=";
@@ -276,6 +276,31 @@ namespace EudoraCinema.Controllers
                 }
                 return HttpNotFound();
             }
+        }
+        public ActionResult ListHoaDonByName()
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                //httpClient.BaseAddress = new Uri(UriString);
+                using (HttpResponseMessage response = httpClient.GetAsync(http_base + direct_Ghe + method_GetAllHD + Session["IDnguoidung"]).Result)
+                {
+                    if(response.IsSuccessStatusCode)
+                    {
+                        string jsonData = response.Content.ReadAsStringAsync().Result;
+                        List<HoadonEntity> lstPhim = JsonConvert.DeserializeObject<List<HoadonEntity>>(jsonData);
+                        return View("BookTicket",lstPhim);
+                    }
+                    else
+                    {
+                        TempData["Message"] = "Không có hóa đơn nào cả!";
+                        return RedirectToAction("HomePage");
+                    }    
+                }
+            }
+        }
+        public ActionResult Doimatkhau()
+        {
+            return View();
         }
         public ActionResult ListHoaDonByName()
         {

@@ -17,8 +17,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort>44375</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -200,6 +199,7 @@
     <Content Include="Image\logo.png" />
     <Content Include="Image\media_images_2023_02_17_400x633-1-141958-170223-98.jpg" />
     <Content Include="Image\Tickets.png" />
+    <Content Include="Image\user.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\Settings.settings">
@@ -239,6 +239,7 @@
     <Content Include="Views\Taikhoan\HomePage.cshtml" />
     <Content Include="Views\Taikhoan\FilmCommingSoon.cshtml" />
     <Content Include="Views\Taikhoan\setStatus.cshtml" />
+    <Content Include="Views\Taikhoan\Doimatkhau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
