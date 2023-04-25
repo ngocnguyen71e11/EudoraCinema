@@ -63,7 +63,13 @@ a {
 }
 .img-ticket {
     position: absolute;
-    width: 6%;
-    right: 250px;
-    top: 10px;
+    width: 4%;
+    right: 260px;
+    top: 30px;
+}
+.img-user {
+    position: absolute;
+    width: 3%;
+    right: 200px;
+    top: 35px;
 }

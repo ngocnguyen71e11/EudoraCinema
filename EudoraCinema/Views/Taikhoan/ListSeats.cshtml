@@ -31,6 +31,11 @@
             padding: 20px;
             padding-top:20px;
         }
+        .btn-thanhtoan {
+            background-color: orange;
+            margin-left: 80%;
+            margin-top:5%;
+        }
     </style>
     <div style=" display:flex;color:orange; font-size:25px">
         <a style="color:orange;" href="@Url.Action("HomePage", "Taikhoan")">TRANG CHỦ</a>||<a style="color: orange;" href="@Url.Action("ListSeats", "Taikhoan")">CHỌN GHẾ</a>
@@ -61,7 +66,11 @@
 
         }
     }
-    <table style="margin-left:300px; ">
+    @if (TempData["Message_themghe"] != null)
+    {
+        <div class="alert alert-success">@TempData["Message_themghe"]</div>
+    }
+    <table style="margin-left:15%; ">
         @for (int i = 1; i < 20; i++)
         {
             <tr>
@@ -73,7 +82,12 @@
                         seat++;
                         if (lstGhe.GetValue(i, j) == "đã đặt")
                         {
-                            <th id="seat-off" style="background-color: red; border: 10px solid #ffffff;"><a style="width:100%; color: #fff" id=@lstGhe.GetValue(i, j)>@seat</a></th>
+
+                            <th id="seat-off" style="background-color: red; border: 10px solid #ffffff;"><a style="width:100%; color: #fff">@nameghe</a></th>
+                        }
+                        else if (lstGhe.GetValue(i, j) == "Chờ")
+                        {
+                            <th id="seat-wait" style="background-color: #ffd800; border: 10px solid #ffffff; "><a style="width:100%; color: #fff">@nameghe</a></th>
                         }
                         else
                         {
@@ -86,7 +100,7 @@
             </tr>
         }
     </table>
-    <div style="display: flex; padding-left: 40%;padding-top:5%; ">
+    <div style="display: flex; margin-left: 30%;padding-top:5%; ">
         <div class="ghe-detail">
             <label>Ghế trống</label>
             <div class="ghe-detail_on"></div>
@@ -102,6 +116,8 @@
     </div>
     <script>
         document.getElementById('seat-off').disabled = false;
+        document.getElementById('seat-wait').disabled = true;
     </script>
+    <button id="booklistve" class="btn btn-thanhtoan"><a href="@Url.Action("ListHoaDonByName", "Taikhoan")">Thanh toán ngay</a></button>
 </body>
 </html>
